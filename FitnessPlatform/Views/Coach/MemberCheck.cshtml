@@ -1,0 +1,306 @@
+﻿@model IEnumerable<FitnessPlatform.ViewModel.tBookingVM>
+
+<html lang="en">
+<head>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fitness santé</title>
+    <link rel="icon" href="url('@Url.Content("~/imgsanté.jpg")')">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/loaders.css">
+    <link rel="stylesheet" href="~/css/swiper.min.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="~/css/nivo_themes/default/default.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+    </script>
+    <link rel="Stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/sunny/jquery-ui.css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
+    <script src="~/js/tether.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/scrollPosStyler.js"></script>
+    <script src="~/js/swiper.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/nivo-lightbox.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/core.js"></script>
+    <link href="~/Scripts/Canlendar/main.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/print.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/SketChy.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/FullCalendarBootstrap.css" rel="stylesheet" />
+    <link href="~/Scripts/JqueryUI/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Scripts/JqueryUI/jquery-ui.min.js"></script>
+    <link href="~/Scripts/JqueryUI/timepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/JqueryUI/timepicker.js"></script>
+    <script src="~/Scripts/JqueryUI/zhtw.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        h2 h3 h4 {
+            font-family: Microsoft JhengHei UI;
+            font-weight: inherit;
+        }
+
+        .modal {
+            top: 10%;
+        }
+
+        .fc-h-event .fc-event-main {
+            color: black !important;
+        }
+
+        #calendar, fieldset, legend {
+            min-width: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin-bottom: .5rem;
+            font-size: 1.5rem;
+            line-height: inherit;
+            color: inherit;
+            white-space: normal;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .modal-header button {
+            display: none !important;
+        }
+
+        .fc-theme-standard .fc-scrollgrid {
+            border: 2px solid #333;
+        }
+
+        .fc-scrollgrid {
+            border-radius: 5px 25px 5px 25px/25px 5px 25px 5px;
+        }
+
+        .Coach {
+            background-color: aquamarine !important;
+        }
+
+        .beConfirmed {
+            background-color: gold !important;
+        }
+
+        .Confirm {
+            background-color: greenyellow !important;
+        }
+
+        .defined {
+            background-color: #F5B0C7 !important;
+        }
+
+        .fc-scroller {
+            overflow-y: scroll !important;
+            overflow-x: hidden !important;
+        }
+
+        body {
+            padding-left: 10px !important;
+        }
+
+        th:nth-child(1), th:nth-child(2), th:nth-child(3) {
+            width: 80px;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -999;
+        }
+
+            .bg img {
+                min-height: 100%;
+                width: 100%;
+            }
+    </style>
+</head>
+<body bgcolor="#091724" id="page-top">
+    <div class="bg">
+        <img src="~/Images/gym2.png" style="z-index:-1; position:absolute; opacity:0.5; width:100vw" />
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position:fixed;top:0px;width:120%;z-index:99999;background-color:#333 !important;left:0;">
+        <a class="navbar-brand" href="#" style="text-transform:uppercase">FITNESS <span style="color:red">santé</span></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/Member/CoachLogin">教練行事曆</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="row" style="margin-top:150px;">
+        <a href="/Member/CoachLogin" id="" class="btn btn-lg btn btn-outline-danger" style="float:right;margin-left:100px;font-weight:bolder;">回排休畫面</a>
+        <button id="btnConfirm" class="btn btn-lg btn btn-outline-dark" style="float:right;margin-left:20px;font-weight:bolder;">完成訂單</button>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped " style="margin-top:20px;">
+        <thead>
+            <tr style="background-color:aliceblue">
+                <th style="width:100px;">
+                    <div style="clear:both;">確認</div>
+                    <div style="clear:both;">
+                        <input type="checkbox" class="allyes" style="margin-left:30px;margin-top:25px;" />
+                    </div>
+                </th>
+                <th style="width:100px;">
+                    <div style="clear:both;">婉拒</div>
+                    <div style="clear:both;">
+                        <input type="checkbox" class="allno" style="margin-left:30px;margin-top:25px;" />
+                    </div>
+                </th>
+                <th>姓名</th>
+                <th>年齡</th>
+                <th>性別</th>
+                <th>電話</th>
+                <th>Email</th>
+                <th>課程起始</th>
+                <th>課程結束</th>
+                <th>申請時間</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td style="text-align:center;">
+                        <input type="checkbox" class="yes chk" value="1" data-id="@p.OrderID" style="margin-top:30px" />
+                    </td>
+                    <td style="text-align:center;">
+                        <input type="checkbox" class="no chk" value="2" data-id="@p.OrderID" style="margin-top:30px" />
+                    </td>
+                    <td>@p.MemberName</td>
+                    <td>@p.fMemberAge</td>
+                    <td>@p.fMemberGender</td>
+                    <td>@p.fMemberPhone</td>
+                    <td>@p.fMemberEmail</td>
+                    <td>@p.StartTime</td>
+                    <td>@p.Endtime</td>
+                    <td>@p.Applytime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <script>
+        var CoachID = '@ViewBag.CoachID';
+        $('.allyes').click(function () {
+            if ($(this).prop('checked') == true) {
+                $('.yes').prop('checked', true);
+                $('.no').prop('checked', false);
+                $('.allno').prop('checked', false);
+            } else {
+                $('.yes').prop('checked', false);
+            }
+        });
+        $('.allno').click(function () {
+            if ($(this).prop('checked') == true) {
+                $('.no').prop('checked', true);
+                $('.yes').prop('checked', false);
+                $('.allyes').prop('checked', false);
+            } else {
+                $('.no').prop('checked', false);
+            }
+        });
+        $('.chk').click(function () {
+            $(this).parents('tr').find('.chk').not(this).prop('checked', false);
+        });
+        $('#btnConfirm').click(function () {
+            if ($('.chk:checked').length == 0) {
+                swal("訂單尚未確認", "Your order has not been confirmed yet", "info");
+                return false;
+            }
+
+                swal({
+                    title: "您確定完成訂單?",
+                    text:"Are you sure you want to complete the apply?",
+                    icon: "warning",
+                    buttons: {
+                        Btn: false,
+                        cancel: {
+                            text: "取消",
+                            visible: true,
+                            value: "cancel"
+
+                        },
+                        danger: {
+                            text: "確定",
+                            visible: true,
+                            value: "sure"
+                        }
+                    }
+                }).then((value) => {
+                    switch (value) {
+                        case "cancel":
+                            swal("訂單尚未完成", "Your order has not been completed", "error");
+                            break;
+                        case "sure":
+
+                            var applyObj = [];
+                            $('.chk:checked').each(function () {
+                                var myclass = { 'forderid': $(this).data('id'), 'fSuccessed': $(this).val() }
+                                applyObj.push(myclass);
+                            });
+                            applyObj = JSON.stringify(applyObj);
+                            applyObj = JSON.parse(applyObj);
+
+                            console.log(applyObj);
+
+                             $.ajax({
+                                url: '@Href("~/Coach/CompleteTbookData")',
+                                type:'POST',
+                                dataType: 'text',
+                                async: false,
+                                data: { 'applyObj': applyObj },
+                                success: function (data) {
+                                    swal("訂單已確認", "Your order has been confirmed", "success");
+                                    setTimeout(function () { location.reload();}, 2000);
+
+                                }
+                            });
+                    }
+
+                });
+        });
+
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts.js"></script>
+</body>
+</html>
+

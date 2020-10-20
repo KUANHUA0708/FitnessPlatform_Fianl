@@ -1,0 +1,90 @@
+﻿@model List<FitnessPlatform.tCoach>
+@{
+    ViewBag.Title = "ViewCoach";
+}
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>教練團隊</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        h2 h3 h4 {
+            font-family: Microsoft JhengHei UI;
+            font-weight: inherit;
+        }
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -999;
+        }
+
+            .bg img {
+                min-height: 100%;
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position:fixed;top:0px;width:100%;z-index:99999">
+        <a class="navbar-brand" href="#" style="text-transform:uppercase">FITNESS <span style="color:red">santé</span></a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Fitness/Index">回首頁</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/Coach/ViewCoach">教練團隊</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Member/Login" id="callander" style="display:none !important;">行事曆</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="bg">
+        <img src="~/Images/gym1.png" style="z-index:-1; position:absolute; opacity:0.8; width:100vw" />
+    </div>
+    <div class="row" style="margin-top:100px;">
+        @foreach (var q in Model)
+        {
+            string href = "/Canlendar/Booking/?coachid=" + q.fCoachID;
+            <div class=" col-xs-12 col-sm-12 col-md-4  col-lg-3">
+                <div class="card">
+                    <img class="card-img-top" src="@q.fCoachimg" alt="Card image cap" style="width:100%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">@q.fCoachName</h5>
+                        <p class="card-text">@q.fCoachMail</p>
+                        <a href="@href" class="btn join" style="background-color:#495057;color:white;">Join Class</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+        var login = '@ViewBag.Login';
+        if (login == "Y") {
+            $('#callander').show();
+        }
+        $('.join').click(function () {
+            if (login == "N") {
+                swal("請先登入／註冊會員", "", "error");
+                $('#callander').hide();
+                return false;
+            } else if (login == "Y") {
+                $('#callander').show();
+            }
+        });
+
+    </script>
+</body>
+</html>

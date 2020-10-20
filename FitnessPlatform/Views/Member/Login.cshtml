@@ -1,0 +1,1753 @@
+﻿@model FitnessPlatform.Models.Ctdatatable
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fitness santé</title>
+    <link rel="icon" href="url('@Url.Content("~/imgsanté.jpg")')">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/loaders.css">
+    <link rel="stylesheet" href="~/css/swiper.min.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="~/css/nivo_themes/default/default.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+    </script>
+    <link rel="Stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/sunny/jquery-ui.css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
+
+
+
+
+
+    @*<script src="~/js/jquery.min.js"></script>*@
+    <script src="~/js/tether.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/scrollPosStyler.js"></script>
+    <script src="~/js/swiper.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/nivo-lightbox.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/core.js"></script>
+    <!--css-->
+    <link href="~/Scripts/Canlendar/main.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/print.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/SketChy.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/FullCalendarBootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <style>
+        #dropdownMenuLink, #dropdownMenuLink2, h2 {
+            font-family: "Microsoft JhengHei UI";
+            font-weight: inherit;
+        }
+
+        .modal {
+            top: 10%;
+        }
+
+        .fc-h-event .fc-event-main {
+            color: black !important;
+        }
+
+        #calendar, fieldset, legend {
+            min-width: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin-bottom: .5rem;
+            font-size: 1.5rem;
+            line-height: inherit;
+            color: inherit;
+            white-space: normal;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .modal-header button {
+            display: none !important;
+        }
+
+        .fc-theme-standard .fc-scrollgrid {
+            border: 2px solid #333;
+        }
+
+        .fc-scrollgrid {
+            border-radius: 5px 25px 5px 25px/25px 5px 25px 5px;
+        }
+
+        .Coach {
+            background-color: aquamarine !important;
+        }
+
+        .beConfirmed {
+            background-color: gold !important;
+        }
+
+        .Confirm {
+            background-color: greenyellow !important;
+        }
+
+        .defined {
+            background-color: #F5B0C7 !important;
+        }
+
+        .fc-scroller {
+            overflow-y: scroll !important;
+            overflow-x: hidden !important;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -999;
+        }
+
+            .bg img {
+                min-height: 100%;
+                width: 100%;
+            }
+    </style>
+</head>
+<body bgcolor="#091724" id="page-top">
+    <div class="bg">
+        <img src="~/Images/GYM3.jpg" style="z-index:-1; position:absolute; opacity:0.6; width:100vw" />
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position:fixed;top:0px;width:120%;z-index:99999;background-color:#333 !important;left:-11px;">
+        <a class="navbar-brand" href="#" style="text-transform:uppercase">FITNESS <span style="color:red">santé</span></a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Fitness/Index">回首頁</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/Coach/ViewCoach">教練團隊</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Member/Login">行事曆</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/GoogleMapForStudio/displayPage">健身房地點</a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" style="top:30px;">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Clarence Taylor</span>
+            <span class="d-none d-lg-block"><a href="#Login" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#Login"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="@Model.Cmember.fMemberPicture" alt="" /></a></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top:-20px;">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#Calendar">學員行事曆</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/Coach/ViewCoach">教練團隊</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#DietRecord">飲食紀錄</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a style="font-size:17px;" class="nav-link js-scroll-trigger navbar-brand dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            飲食紀錄查詢
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#Breakfast">早餐</a>
+                            <a class="dropdown-item" href="#Lunch">中餐</a>
+                            <a class="dropdown-item" href="#Dinner">晚餐</a>
+                            <a class="dropdown-item" href="#Dessert">點心</a>
+                        </div>
+                    </div>
+
+
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a style="font-size:17px;" class="nav-link js-scroll-trigger navbar-brand dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            飲食卡路里檢視
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                            <a class="dropdown-item" href="#DietCaloriesToday">今日</a>
+                            <a class="dropdown-item" href="#DietCaloriesYesterday">昨日</a>
+                            <a class="dropdown-item" href="#DietCaloriesThisWeek">本週</a>
+                            <a class="dropdown-item" href="#DietCaloriesLastWeek">上週</a>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/Fitness/Index">回首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/Member/Logout">登出</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#skills"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#interests"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#awards"></a>
+                </li>
+            </ul>
+        </div>
+        <div>
+
+        </div>
+    </nav>
+    <!--彈出評價-->
+    @{
+        foreach (var items in Model.Corder)
+        {
+            if (items.fEndTime < Model.Cmember.fMember_time && items.fOrderlike == -1)
+            {
+                <script>
+                    window.onload = function () {
+                        $("#showpoint").click()
+
+                    }
+                    function givecommet() {
+                        $.ajax({
+                            type: "post",
+                            url: "/Member/getcomment",
+                            data: {
+                                "forderid": "@items.forderid",
+                                "fOrderAbout": $("#defaultForm").val()
+                            },
+                            success(data) {
+
+                            }
+                        })
+                    }
+                    function nogivecommet() {
+                        $.ajax({
+                            type: "post",
+                            url: "/Member/nogetcomment",
+                            data: {
+                                "forderid": "@items.forderid",
+                            },
+                            success(data) {
+
+                            }
+                        })
+                    }
+                </script>
+                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="false">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold">教練評分</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-3">
+                                <div class="md-form mb-4">
+                                    @*<i class="fas fa-lock prefix grey-text"></i>*@
+                                    <h3></h3>
+                                    <img style="padding-left:20px" src="@Model.Ccoach.fCoachimg" />
+                                    <h3></h3>
+                                    <input id="defaultForm" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass" style="font-size:20px;margin-top:20px;margin-left:100px;">請給這次的課程教練評分</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button id="agree" class="btn btn-default" data-toggle="modal" data-target="#modalLoginForm" onclick="givecommet()"  style="font-size:20px;font-weight:bold;">支持</button>
+                                <button id="notagree" class="btn btn-default" data-toggle="modal" data-target="#modalLoginForm" onclick="nogivecommet()" style="font-size:20px;font-weight:bold;">暫不評論</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="" id="showpoint" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm" style="display:none">
+                        Launch
+                    </a>
+                </div>
+            }
+        }
+    }
+    <!--彈出修改個人資料-->
+    <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
+                                <i class="fas fa-user mr-1"></i>
+                                修改個人資料
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+                        <!--Panel 7-->
+
+                        <form method="post" action="/Member/Editmember" class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                            <!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="form-group" style="display:none">
+                                    @Html.LabelFor(model => model.Cmember.fMemberId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberId, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>姓名</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display:none">
+                                    <div>信箱</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberEmail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display:none">
+                                    <div>性別</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberGender, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberGender, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>聯絡方式</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberPhone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>通訊地址</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.MemberAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>密碼</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>頭貼</div>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Cmember.fMemberPicture, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cmember.fMemberPicture, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <div>選擇大頭貼圖片</div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            @Html.BeginForm("Editmember","Mmeber", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            <input type="file" name="image" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                                <div class="text-center mt-2">
+                                    <input id="Login" type="submit" value="確認修改" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                        <!--/.Panel 7-->
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+        <!-- About-->
+        <section class="resume-section" id="Calendar" style="margin-top:50px;margin-left:50px;">
+            <!-- new-->
+            <div class="row">
+                <h4 style="padding-left:935px">
+                    <span style="background-color: gold">待確認</span>&nbsp;
+                    <span style="background-color:greenyellow">確認</span>&nbsp;
+                    <span style="background-color:#F5B0C7">婉拒</span>
+                </h4>
+
+                <h2 style="padding-left:300px ;font-weight:inherit">學員課程行事曆</h2>
+                <h2 style="color:#cd2323">(Student Schedule)</h2>
+                <div id="calendar_1" style="margin-top:20px;width:100%;"> </div>
+
+                <div id="MemberDialog" class="modal fade" role="dialog">
+                    <input type="hidden" id="eventid" />
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title t1" style="font-family: 'Microsoft JhengHei UI';color:black; font-weight:bolder;">
+                                    學員預約時間
+                                    <span style="font-family: Cabin Sketch, cursive;">(Booking your time)</span>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="p">
+                                    會員姓名：
+                                    <span id="cMemberName" style="color:brown"></span>
+                                </div>
+                                <div class="p">
+                                    教練：
+                                    <span id="cCoachName" style="color:brown"></span>
+                                </div>
+                                <div class="p">
+                                    訓練部位：
+                                    <span id="cDescription" style="color:brown"></span>
+                                </div>
+                                <div class="p">
+                                    健身房：
+                                    <span id="cGym" style="color:brown"></span>
+                                    <a target="_blank" href="/GoogleMapForStudio/displayPage" style="font-size:14px;color:steelblue;">查看地圖</a>
+                                </div>
+                                <div class="p">
+                                    開始時間：
+                                    <span id="cStartDate"></span>
+                                </div>
+                                <div class="p">
+                                    結束時間：
+                                    <span id="cEndDate"></span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <h5 style="color: #2C4CDB;font-weight: bolder;font-family: 'Microsoft JhengHei UI';display: none; float:left" id="declinedText">該課程已取消預定，若有疑問請洽負責之訓練教練</h5>
+                                <button id="send" type="button" class="btn btn-success" data-dismiss="modal">關閉</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- new-->
+
+        </section>
+        <hr class="m-0" />
+        <!-- Experience-->
+        <section class="resume-section" id="DietRecord">
+            <div class="resume-section-content" style="margin-left:200px;border-bottom:solid;">
+                <h2 class="mb-5" style="padding:0px">飲食紀錄</h2>
+                <h2 style="color:#cd2323">(Diet Record)</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <div class="subheading mb-3">
+                            日期：
+                            <input type="text" name="date" class="datepicker tags" id="date" />
+                            <span id="block1" style="color:crimson"></span>
+                        </div>
+                        <br />
+                        <div class="subheading mb-3">
+                            用餐時段：
+                            <select id="EatTime" name="EatTime" class="EatTime1">
+                                <option>請選擇</option>
+                                @foreach (var data in Model.Ctime)
+                                {
+                                    <option name="EatTime" value="@data.fTimeId">@data.fTimeName</option>
+                                }
+                            </select>
+                            <span id="block2" style="color:crimson"></span>
+                        </div>
+                        <br />
+                        <div class="subheading mb-3">
+                            食物品項：
+                            <div id="bigDiv">
+                                <div class="row mydiv" style="margin-top:10px;">
+                                    <input class="tags" id="fooditem">
+                                    <button class="btnAdd btn btn-primary">新增</button>
+                                    <span id="block3" style="color:crimson"></span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <button id="btnStore" class="btn btn-success btn-xs">儲存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--飲食紀錄查詢-早餐-->
+        <section class="resume-section" id="Breakfast" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食紀錄查詢-早餐</h2>
+                <h2 style="color:#cd2323">(Diet Record Query-Breakfast)</h2>
+                <div class="subheading mb-3">
+                    請輸入日期：
+                    <input type="text" id="fDateBk" name="fDate" class="form-control datepicker tags" autocomplete="off" />
+                    <h3></h3>
+                    <button id="btndateBk" class="btn btn-info">查詢</button>
+                </div>
+            </div>
+        </section>
+        <div id="demo"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        食物名稱
+                    </th>
+                    <th>
+                        蛋白質
+                    </th>
+                    <th>
+                        脂肪
+                    </th>
+                    <th>
+                        碳水化合物
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="fooddetailBk"></tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-4" style="">
+                <h2 style="margin-left:200px;">圓餅圖</h2>
+            </div>
+            <canvas id="peiChartBk"></canvas>
+        </div>
+        <hr class="m-0" />
+        <!--飲食紀錄查詢-午餐-->
+        <section class="resume-section" id="Lunch" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食紀錄查詢-午餐</h2>
+                <h2 style="color:#cd2323">(Diet Record Query-Lunch)</h2>
+                <div class="subheading mb-3">
+                    請輸入日期：
+                    <input type="text" id="fDateLc" name="fDate" class="form-control datepicker tags" autocomplete="off" />
+                    <h3></h3>
+                    <button id="btndateLc" class="btn btn-info">查詢</button>
+                </div>
+            </div>
+        </section>
+        <div id="demo"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        食物名稱
+                    </th>
+                    <th>
+                        蛋白質
+                    </th>
+                    <th>
+                        脂肪
+                    </th>
+                    <th>
+                        碳水化合物
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="fooddetailLc"></tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-4" style="">
+                <h2 style="margin-left:200px;">圓餅圖</h2>
+            </div>
+            <canvas id="peiChartLc"></canvas>
+        </div>
+        <hr class="m-0" />
+        <!--飲食紀錄查詢-晚餐-->
+        <section class="resume-section" id="Dinner" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食紀錄查詢-晚餐</h2>
+                <h2 style="color:#cd2323">(Diet Record Query-Dinner)</h2>
+                <div class="subheading mb-3">
+                    請輸入日期：
+                    <input type="text" id="fDateDn" name="fDate" class="form-control datepicker tags" autocomplete="off" />
+                    <h3></h3>
+                    <button id="btndateDn" class="btn btn-info">查詢</button>
+                </div>
+            </div>
+        </section>
+        <div id="demo"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        食物名稱
+                    </th>
+                    <th>
+                        蛋白質
+                    </th>
+                    <th>
+                        脂肪
+                    </th>
+                    <th>
+                        碳水化合物
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="fooddetailDn"></tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-4" style="">
+                <h2 style="margin-left:200px;">圓餅圖</h2>
+            </div>
+            <canvas id="peiChartDn"></canvas>
+        </div>
+        <hr class="m-0" />
+        <!--飲食紀錄查詢-點心-->
+        <section class="resume-section" id="Dessert" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食紀錄查詢-點心</h2>
+                <h2 style="color:#cd2323">(Diet Record Query-Dessert)</h2>
+                <div class="subheading mb-3">
+                    請輸入日期：
+                    <input type="text" id="fDateDs" name="fDate" class="form-control datepicker tags" autocomplete="off" />
+                    <h3></h3>
+                    <button id="btndateDs" class="btn btn-info">查詢</button>
+                </div>
+            </div>
+        </section>
+        <div id="demo"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        食物名稱
+                    </th>
+                    <th>
+                        蛋白質
+                    </th>
+                    <th>
+                        脂肪
+                    </th>
+                    <th>
+                        碳水化合物
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="fooddetailDs"></tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-2" style="">
+                <h2 style="margin-left:200px;">圓餅圖</h2>
+            </div>
+            <canvas id="peiChartDs"></canvas>
+        </div>
+        <hr class="m-0" />
+        <!-- 飲食卡路里--今日-->
+        <section class="resume-section" id="DietCaloriesToday" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食卡路里查詢--今日</h2>
+                <h2 style="color:#cd2323">Diet Calorie Query--Today</h2>
+                <br />
+                <div id="containerTd" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+
+        </section>
+        <hr class="m-0" />
+        <!-- 飲食卡路里--昨日-->
+        <section class="resume-section" id="DietCaloriesYesterday" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食卡路里查詢--昨日</h2>
+                <h2 style="color:#cd2323">Diet Calorie Query--Yesterday</h2>
+                <br />
+                <div id="containerYd" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+
+        </section>
+        <hr class="m-0" />
+        <!-- 飲食卡路里--本週-->
+        <section class="resume-section" id="DietCaloriesThisWeek" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食卡路里查詢--本週</h2>
+                <h2 style="color:#cd2323">Diet Calorie Query--This Week</h2>
+                <br />
+                <div id="containerTw" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+
+        </section>
+        <hr class="m-0" />
+        <!-- 飲食卡路里--上週-->
+        <section class="resume-section" id="DietCaloriesLastWeek" style="margin-left:200px;">
+            <div class="resume-section-content">
+                <h2 class="mb-5">飲食卡路里查詢--上週</h2>
+                <h2 style="color:#cd2323">Diet Calorie Query--Last Week</h2>
+                <br />
+                <div id="containerLw" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+
+        </section>
+
+    </div>
+    <!--行事曆-->
+
+    <script src="~/Scripts/Canlendar/fullcalendar.min.js"></script>
+    <script src="~/Scripts/Canlendar/main.min.js"></script>
+    <script src="~/Scripts/Canlendar/moment.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var CoachID = 1;
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar_1');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                locale: 'zh-tw',
+                eventStartEditable: false,
+                //initialDate: '2020-09-01',
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: true,
+                selectable: true,
+                displayEventEnd:true,
+                eventDragStart: function () {
+                return false;
+                },
+                eventResize: function (info) {
+                alert(info.event.title + " end is now " + info.event.end.toISOString());
+                    if (!confirm("is this okay?")) {
+                        info.revert();
+                    }
+                },
+                dateClick: function (info) {//新增
+                },
+                eventClick: function (info) { //修改
+                    $('#MemberDialog').modal();
+                    $('#cMemberName').text(info.event.extendedProps.MemberName);
+                    $('#cCoachName').text(info.event.extendedProps.CoachName);
+                    $('#cDescription').text(info.event.extendedProps.Description  );
+                    $('#cGym').text(info.event.extendedProps.Gym  );
+                    $('#cStartDate').text(info.event.extendedProps.StartDate);
+                    $('#cEndDate').text(info.event.extendedProps.EndDate);
+                    if (info.event.extendedProps.MyClassName == 'defined') {
+                        $('#declinedText').show();
+                    } else {
+                        $('#declinedText').hide();
+                    }
+                },
+                eventTimeFormat: { // like '14:30:00'
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                },
+                eventContent:function(info) {
+                    //console.log(event);
+                    return {
+                        html:  info.timeText  + '<br />'
+                              +  info.event.extendedProps.Gym
+                    }
+                },
+                events: function (info, successCallback, failureCallback) {
+                        $.ajax({
+                            url: '@Href("~/Member/GetTbookData")',
+                            dataType: 'json',
+                            success: function (data) {
+                                //console.log(data);
+                                var eventArray = [];
+                                $(data).each(function (index, item) {
+                                    //console.log(item.OrderStatus)
+                                    //alert(item.OrderStatus );
+                                    var color = item.OrderStatus;
+                                    if (item.OrderStatus == "0") {
+                                        color = "beConfirmed";
+                                    } else if (item.OrderStatus == "1") {
+                                        color = "Confirm";
+                                    } else if (item.OrderStatus == '2') {
+                                        color = "defined";
+                                    }
+                                    if (item.type == 'member') {
+                                        eventArray.push({
+                                            "id": item.groupId,
+                                            "title": '<br />'+ item.GymName,
+                                            "start": item.start,
+                                            "end": item.end,
+                                            "color": item.color,
+                                            "StartDate": item.start,
+                                            "EndDate": item.end,
+                                            "Description": item.TrainingName,
+                                            "Gym": item.GymName,
+                                            "MemberName": item.membername,
+                                            "className": color,
+                                            "MyClassName": color,
+                                            "CoachName": item.CoachName
+
+                                        });
+                                    }
+                                });
+
+                                successCallback(eventArray);
+
+                            }
+                        });
+
+               }
+            });
+
+            calendar.render();
+        });
+    </script>
+    <!--========================================================================================-->
+    <script>
+    //$('[name=EatTime]').change(function () {
+    //    var checked = $('[name=EatTime]:checked')
+    //    console.log('選擇中的值:', checked.val());
+    //    checked.addClass("tags");
+    //});
+    //function run() {
+    //    //var etime = document.getElementById("EatTime").value;
+    //    if ($('#EatTime').val() != "請選擇")
+    //    {
+    //        $(this).next('span').text('');
+    //    }
+
+    //}
+    $('[name=EatTime]').change(function () {
+        var checked = $('[name=EatTime]:checked')
+        $('#block2').text('');
+        console.log('選擇中的值:', checked.val());
+        $('[name=EatTime]').removeClass("tags");
+        checked.addClass("tags");
+    });
+
+    $("#bigDiv").on("click", ".btn-danger", function () {
+        $(this).closest("div").remove();
+    });
+
+        $(function () {
+
+            //setInterval(function () {
+            //    $('#dropdownMenuLink').css('style',' font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;');
+
+            //    console.log($('#dropdownMenuLink').attr('style'));
+            //}, 1000);
+
+
+        addFunction();
+
+        function addFunction() {
+            $('.btnAdd').unbind().click(function () {
+                $('#bigDiv').append(' <div class="row mydiv" style="margin-top:10px;" ><input class="tags"><a href="#DietRecord" class="btn btn-danger">刪除</a></div>');
+                addFunction();
+            });
+
+            $(".tags").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "@Href("~/Member/GetAutoComplete")",
+                        data: "{'fname':'" + request.term + "'}",
+                        dataType: "json",
+                        type: "Post",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+
+                                return {
+                                    label: item.value,      //自動完成列表的顯示文字
+                                    fId: item.value      //自動完成列表選項的值......選取後會呈現在輸入框的值
+                                }
+
+                            }));
+                        $('#block3').text('');
+                        }
+                    });
+                }
+
+            });
+        }
+
+        $('#btnStore').click(save);
+        $('.delete').click(del);
+    });
+
+    function save() {
+        if ($('#date').val() == '') {
+                $('#block1').text("請選擇日期");
+                return false;
+
+        }
+        else if ($('#EatTime').val() == "請選擇" || "") {
+                $('#block2').text("請選擇時段");
+                return false;
+        }
+        else if ($('#fooditem').val() == '') {
+            $('#block3').text("請輸入食物名稱");
+            return false;
+        }
+        else {
+        var GymNameArray = [];
+        $(".tags").each(function (index, item) {
+            if ($(this).val() != '') {
+                GymNameArray.push($(this).val());
+            }
+        });
+        var jsonstr = JSON.stringify(GymNameArray);
+        var jsonArray = JSON.parse(jsonstr);
+
+            swal({
+              title: "您確定要儲存嗎?",
+              text:"Are you sure you want to save?",
+              icon: "warning",
+              buttons: {
+              Btn: false,
+              cancel: {
+              text: "取消",
+              visible: true,
+              value: "cancel"
+              },
+              danger: {
+              text: "確定",
+              visible: true,
+              value: "sure"
+              }
+              }
+              }).then((value) => {
+              switch (value) {
+              case "cancel":
+              swal("儲存失敗", "You failed to save", "error");
+              break;
+              case "sure":
+              swal("儲存成功", "You have successfully saved", "success");
+              $.ajax({
+              url: "@Href("~/Member/AddGetGymNameArray")",
+              type: "POST",
+              data: { 'values': jsonArray },
+              dataType: "text",
+              success: function (data) {
+              //swal("儲存成功", "You have successfully saved", "success");
+                  $.getJSON("/Member/FoodCaloriesToday", function (data) {
+
+                      var Dates = []
+                      var Calories = []
+                      var EatTime = []
+                      for (var i = 0; i < data.length; i++) {
+                          Dates.push(data[i].name);
+                          //EatTime.push(data[i].gro);
+                          Calories.push(data[i].count);
+
+                      }
+
+                      Highcharts.chart('containerTd', {
+                          chart: {
+                              type: 'column'
+                          },
+                          title: {
+                              text: '今日飲食卡路里'
+                          },
+                          xAxis: {
+                              categories: Dates
+                          },
+                          yAxis: {
+                              min: 100,
+                              title: {
+                                  text: '熱量 (大卡)'
+                              },
+                              stackLabels: {
+                                  enabled: true,
+                                  style: {
+                                      fontWeight: 'bold',
+                                      color: ( // theme
+                                          Highcharts.defaultOptions.title.style &&
+                                          Highcharts.defaultOptions.title.style.color
+                                      ) || 'gray'
+                                  }
+                              }
+                          },
+                          legend: {
+                              align: 'right',
+                              x: -30,
+                              verticalAlign: 'top',
+                              y: 25,
+                              floating: true,
+                              backgroundColor:
+                                  Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                              borderColor: '#CCC',
+                              borderWidth: 1,
+                              shadow: false
+                          },
+                          tooltip: {
+                              headerFormat: '<b>{point.x}</b><br/>',
+                              pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                          },
+                          plotOptions: {
+                              column: {
+                                  stacking: 'normal',
+                                  dataLabels: {
+                                      enabled: true
+                                  }
+                              }
+                          },
+                          series: [{
+                              name: '早餐',
+                              data: [Calories[0]]
+                          }, {
+                              name: '午餐',
+                              data: [Calories[1]]
+                          },
+                          {
+                              name: '晚餐',
+                              data: [Calories[2]]
+                          }, {
+                              name: '點心',
+                              data: [Calories[3]]
+                          }
+                          ]
+                      });
+                  });
+              }
+                     });
+                            }
+
+             });
+        }
+
+    }
+
+        function del() {
+            $(this).parents("row mydiv").remove();
+
+            //console.log(this);
+        };
+
+
+    </script>
+
+    <script>
+        $('#date').datepicker({
+            onSelect: function () {
+                $(this).next('span').text('');
+            }
+        });
+        $(".datepicker").datepicker({
+            onSelect: function () {
+                var dateObject = $(this).datepicker('getDate');
+                console.log(dateObject);
+            },
+            altField: "#datepicker",
+            altFormat: "yy/mm/dd",
+            dateFormat: "yy/mm/dd"
+        });
+
+        $('#dropdownMenuLink').click(function () {
+            $(this).next('.dropdown-menu').show();
+        });
+        $('#dropdownMenuLink2').click(function () {
+            $(this).next('.dropdown-menu').show();
+        });
+        $('.dropdown-item').click(function () {
+            $(this).parent().hide();
+        });
+
+    </script>
+
+    <!--飲食紀錄查詢--早餐 (圓餅圖)-->
+    <script>
+        function breakfast() {
+            var foodsearch = $('#fDateBk').val();
+            console.log(`type of date is ${typeof(foodsearch)}`);
+
+            $.ajax({
+                url: '@Href("~/Member/GetBreakfast")',
+                //data: + request.term + "'}",
+                dataType: "json",
+                data: JSON.stringify({ "fDateBk": foodsearch }),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    //response($.map(data, function (item) {
+                    //    return {
+                        //console.log('fornt end.');
+                        console.log(data);
+                               //自動完成列表選項的值......選取後會呈現在輸入框的值
+                        //}
+                    //
+                    $('#fooddetailBk').empty();
+                    var tbody = document.querySelector('#fooddetailBk')
+
+                    for (let d of data) {
+                        tbody.append(insertData(d))
+
+                    }
+                    foodforPieBk(data)
+                }
+            });
+
+        };
+        $('#btndateBk').click(breakfast);
+
+        function insertData(data) {
+            var tr = document.createElement('tr')
+            for (let key of Object.keys(data)) {
+                var td = document.createElement('td')
+                td.innerText = data[key]
+                tr.append(td)
+            }
+            return tr
+        }
+
+        function foodforPieBk(datas) {
+            var Protein = 0;
+            var Fat = 0;
+            var Carbohydrate = 0;
+            for (let va of datas)
+            {
+                Protein += va.foodprotein;
+                Fat += va.foodfat;
+                Carbohydrate += va.foodcarbohydrate;
+            }
+            var ctxPie = document.getElementById("peiChartBk");
+            var pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ["蛋白質","脂肪","碳水化合物"],
+            datasets: [{
+                data: [Protein.toFixed(2), Fat.toFixed(2), Carbohydrate.toFixed(2)],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)'
+                ],
+                borderWidth:1
+            }],
+        },
+        options: {}
+    });
+
+        }
+    </script>
+    <!--飲食紀錄查詢--午餐 (圓餅圖)-->
+    <script>
+        function lunch() {
+            var foodsearch = $('#fDateLc').val();
+            console.log(`type of date is ${typeof(foodsearch)}`);
+
+            $.ajax({
+                url: '@Href("~/Member/GetLunch")',
+                //data: + request.term + "'}",
+                dataType: "json",
+                data: JSON.stringify({ "fDateLc": foodsearch }),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    //response($.map(data, function (item) {
+                    //    return {
+                        //console.log('fornt end.');
+                        console.log(data);
+                               //自動完成列表選項的值......選取後會呈現在輸入框的值
+                        //}
+                    //
+                    $('#fooddetailLc').empty();
+                    var tbody = document.querySelector('#fooddetailLc')
+
+                    for (let d of data) {
+                        tbody.append(insertData(d))
+
+                    }
+                    foodforPieLc(data)
+                }
+            });
+
+
+        };
+        $('#btndateLc').click(lunch);
+
+        function insertData(data) {
+            var tr = document.createElement('tr')
+            for (let key of Object.keys(data)) {
+                var td = document.createElement('td')
+                td.innerText = data[key]
+                tr.append(td)
+            }
+            return tr
+        }
+
+        function foodforPieLc(datas) {
+            var Protein = 0;
+            var Fat = 0;
+            var Carbohydrate = 0;
+            for (let va of datas)
+            {
+                Protein += va.foodprotein;
+                Fat += va.foodfat;
+                Carbohydrate += va.foodcarbohydrate;
+            }
+            var ctxPie = document.getElementById("peiChartLc");
+            var pieChart = new Chart(ctxPie, {
+                type: 'pie',
+
+        data: {
+            labels: ["蛋白質","脂肪","碳水化合物"],
+            datasets: [{
+                data: [Protein.toFixed(2), Fat.toFixed(2), Carbohydrate.toFixed(2)],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)'
+                ],
+                borderWidth:1
+            }],
+        },
+        options: {}
+    });
+
+        }
+    </script>
+    <!--飲食紀錄查詢--晚餐 (圓餅圖)-->
+    <script>
+        function dinner() {
+            var foodsearch = $('#fDateDn').val();
+            console.log(`type of date is ${typeof(foodsearch)}`);
+
+            $.ajax({
+                url: '@Href("~/Member/GetDinner")',
+                //data: + request.term + "'}",
+                dataType: "json",
+                data: JSON.stringify({ "fDateDn": foodsearch }),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    //response($.map(data, function (item) {
+                    //    return {
+                        //console.log('fornt end.');
+                        console.log(data);
+                               //自動完成列表選項的值......選取後會呈現在輸入框的值
+                        //}
+                    //
+                    $('#fooddetailDn').empty();
+                    var tbody = document.querySelector('#fooddetailDn')
+
+                    for (let d of data) {
+                        tbody.append(insertData(d))
+
+                    }
+                    foodforPieDn(data)
+                }
+            });
+
+
+        };
+        $('#btndateDn').click(dinner);
+
+        function insertData(data) {
+            var tr = document.createElement('tr')
+            for (let key of Object.keys(data)) {
+                var td = document.createElement('td')
+                td.innerText = data[key]
+                tr.append(td)
+            }
+            return tr
+        }
+
+        function foodforPieDn(datas) {
+            var Protein = 0;
+            var Fat = 0;
+            var Carbohydrate = 0;
+            for (let va of datas)
+            {
+                Protein += va.foodprotein;
+                Fat += va.foodfat;
+                Carbohydrate += va.foodcarbohydrate;
+            }
+            var ctxPie = document.getElementById("peiChartDn");
+            var pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ["蛋白質","脂肪","碳水化合物"],
+            datasets: [{
+                data: [Protein.toFixed(2), Fat.toFixed(2), Carbohydrate.toFixed(2)],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)'
+                ],
+                borderWidth:1
+            }],
+        },
+        options: {}
+    });
+
+        }
+    </script>
+    <!--飲食紀錄查詢--點心 (圓餅圖)-->
+    <script>
+        function dessert() {
+            var foodsearch = $('#fDateDs').val();
+            console.log(`type of date is ${typeof(foodsearch)}`);
+
+            $.ajax({
+                url: '@Href("~/Member/GetDessert")',
+                //data: + request.term + "'}",
+                dataType: "json",
+                data: JSON.stringify({ "fDateDs": foodsearch }),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    //response($.map(data, function (item) {
+                    //    return {
+                        //console.log('fornt end.');
+                        console.log(data);
+                               //自動完成列表選項的值......選取後會呈現在輸入框的值
+                        //}
+                    //
+                    $('#fooddetailDs').empty();
+                    var tbody = document.querySelector('#fooddetailDs')
+
+                    for (let d of data) {
+                        tbody.append(insertData(d))
+
+                    }
+                    foodforPieDs(data)
+                }
+            });
+
+
+        };
+        $('#btndateDs').click(dessert);
+
+        function insertData(data) {
+            var tr = document.createElement('tr')
+            for (let key of Object.keys(data)) {
+                var td = document.createElement('td')
+                td.innerText = data[key]
+                tr.append(td)
+            }
+            return tr
+        }
+
+        function foodforPieDs(datas) {
+            var Protein = 0;
+            var Fat = 0;
+            var Carbohydrate = 0;
+            for (let va of datas)
+            {
+                Protein += va.foodprotein;
+                Fat += va.foodfat;
+                Carbohydrate += va.foodcarbohydrate;
+            }
+            var ctxPie = document.getElementById("peiChartDs");
+            var pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ["蛋白質","脂肪","碳水化合物"],
+            datasets: [{
+                data: [Protein.toFixed(2), Fat.toFixed(2), Carbohydrate.toFixed(2)],
+                backgroundColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)'
+                ],
+                borderWidth:1
+            }],
+        },
+        options: {}
+    });
+
+        }
+    </script>
+    <!--飲食卡路里--今日-->
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/Member/FoodCaloriesToday", function (data) {
+
+                var Dates = []
+                var Calories = []
+                var EatTime = []
+                for (var i = 0; i < data.length; i++) {
+                    Dates.push(data[i].name);
+                    //EatTime.push(data[i].gro);
+                    Calories.push(data[i].count);
+
+                }
+
+                Highcharts.chart('containerTd', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '今日飲食卡路里'
+                    },
+                    xAxis: {
+                        categories: Dates
+                    },
+                    yAxis: {
+                        min: 100,
+                        title: {
+                            text: '熱量 (大卡)'
+                        },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: ( // theme
+                                    Highcharts.defaultOptions.title.style &&
+                                    Highcharts.defaultOptions.title.style.color
+                                ) || 'gray'
+                            }
+                        }
+                    },
+                    legend: {
+                        align: 'right',
+                        x: -30,
+                        verticalAlign: 'top',
+                        y: 25,
+                        floating: true,
+                        backgroundColor:
+                            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                        borderColor: '#CCC',
+                        borderWidth: 1,
+                        shadow: false
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{point.x}</b><br/>',
+                        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: '早餐',
+                        data: [Calories[0]]
+                    }, {
+                        name: '午餐',
+                        data: [Calories[1]]
+                    },
+                    {
+                        name: '晚餐',
+                        data: [Calories[2]]
+                    }, {
+                        name: '點心',
+                        data: [Calories[3]]
+                    }
+                    ]
+                });
+            });
+        });
+    </script>
+    <!--飲食卡路里--昨日-->
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/Member/FoodCaloriesYesterday", function (data) {
+
+                var Dates = []
+                var Calories = []
+                var EatTime = []
+                for (var i = 0; i < data.length; i++) {
+                    Dates.push(data[i].name);
+                    //EatTime.push(data[i].gro);
+                    Calories.push(data[i].count);
+
+                }
+
+                Highcharts.chart('containerYd', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '昨日飲食卡路里'
+                    },
+                    xAxis: {
+                        categories: Dates
+                    },
+                    yAxis: {
+                        min: 100,
+                        title: {
+                            text: '熱量 (大卡)'
+                        },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: ( // theme
+                                    Highcharts.defaultOptions.title.style &&
+                                    Highcharts.defaultOptions.title.style.color
+                                ) || 'gray'
+                            }
+                        }
+                    },
+                    legend: {
+                        align: 'right',
+                        x: -30,
+                        verticalAlign: 'top',
+                        y: 25,
+                        floating: true,
+                        backgroundColor:
+                            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                        borderColor: '#CCC',
+                        borderWidth: 1,
+                        shadow: false
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{point.x}</b><br/>',
+                        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: '早餐',
+                        data: [Calories[0]]
+                    }, {
+                        name: '午餐',
+                        data: [Calories[1]]
+                    },
+                    {
+                        name: '晚餐',
+                        data: [Calories[2]]
+                    }, {
+                        name: '點心',
+                        data: [Calories[3]]
+                    }
+                    ]
+                });
+            });
+        });
+    </script>
+    <!--飲食卡路里--本週-->
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/Member/FoodDietCaloriesThisWeek", function (data) {
+
+                var Dates = []
+                var Calories = []
+                var EatTime = []
+                for (var i = 0; i < data.length; i++) {
+                    Dates.push(data[i].name);
+                    //EatTime.push(data[i].gro);
+                    Calories.push(data[i].count);
+
+                }
+
+                Highcharts.chart('containerTw', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '本週飲食卡路里'
+                    },
+                    xAxis: {
+                        categories: Dates
+                    },
+                    yAxis: {
+                        min: 10,
+                        title: {
+                            text: '熱量 (大卡)'
+                        },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: ( // theme
+                                    Highcharts.defaultOptions.title.style &&
+                                    Highcharts.defaultOptions.title.style.color
+                                ) || 'gray'
+                            }
+                        }
+                    },
+                    legend: {
+                        align: 'right',
+                        x: -30,
+                        verticalAlign: 'top',
+                        y: 25,
+                        floating: true,
+                        backgroundColor:
+                            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                        borderColor: '#CCC',
+                        borderWidth: 1,
+                        shadow: false
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{point.x}</b><br/>',
+                        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: '早餐',
+                        data: [Calories[0], Calories[1], Calories[2], Calories[3], Calories[4]]
+                    }, {
+                        name: '午餐',
+                            data: [Calories[5], Calories[6], Calories[7], Calories[8], Calories[9]]
+                    },
+                    {
+                        name: '晚餐',
+                        data: [Calories[10], Calories[11], Calories[12], Calories[13], Calories[14]]
+                    }, {
+                        name: '點心',
+                        data: [Calories[15], Calories[16], Calories[17], Calories[18], Calories[19]]
+                    }
+                    ]
+                });
+            });
+        });
+    </script>
+    <!--飲食卡路里--上週-->
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/Member/FoodDietCaloriesLastWeek", function (data) {
+
+                var Dates = []
+                var Calories = []
+                var EatTime = []
+                for (var i = 0; i < data.length; i++) {
+                    Dates.push(data[i].name);
+                    //EatTime.push(data[i].gro);
+                    Calories.push(data[i].count);
+
+                }
+
+                Highcharts.chart('containerLw', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '上週飲食卡路里'
+                    },
+                    xAxis: {
+                        categories: Dates
+                    },
+                    yAxis: {
+                        min: 10,
+                        title: {
+                            text: '熱量 (大卡)'
+                        },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: ( // theme
+                                    Highcharts.defaultOptions.title.style &&
+                                    Highcharts.defaultOptions.title.style.color
+                                ) || 'gray'
+                            }
+                        }
+                    },
+                    legend: {
+                        align: 'right',
+                        x: -30,
+                        verticalAlign: 'top',
+                        y: 25,
+                        floating: true,
+                        backgroundColor:
+                            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                        borderColor: '#CCC',
+                        borderWidth: 1,
+                        shadow: false
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{point.x}</b><br/>',
+                        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                    },
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: '早餐',
+                        data: [Calories[0], Calories[1], Calories[2], Calories[3], Calories[4]]
+                    }, {
+                        name: '午餐',
+                        data: [Calories[5], Calories[6], Calories[7], Calories[8], Calories[9]]
+                    },
+                    {
+                        name: '晚餐',
+                        data: [Calories[10], Calories[11], Calories[12], Calories[13], Calories[14]]
+                    }, {
+                        name: '點心',
+                        data: [Calories[15], Calories[16], Calories[17], Calories[18], Calories[19]]
+                    }
+                    ]
+                });
+            });
+        });
+    </script>
+
+
+    <!-- Bootstrap core JS-->
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts.js"></script>
+</body>
+</html>

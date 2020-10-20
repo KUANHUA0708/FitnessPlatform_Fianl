@@ -1,0 +1,612 @@
+﻿@model FitnessPlatform.Models.Ctdatatable
+
+<html lang="en">
+<head>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fitness santé</title>
+    <link rel="icon" href="url('@Url.Content("~/imgsanté.jpg")')">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/loaders.css">
+    <link rel="stylesheet" href="~/css/swiper.min.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="~/css/nivo_themes/default/default.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        jQuery.browser = {};
+        (function () {
+            jQuery.browser.msie = false;
+            jQuery.browser.version = 0;
+            if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                jQuery.browser.msie = true;
+                jQuery.browser.version = RegExp.$1;
+            }
+        })();
+    </script>
+    <link rel="Stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/sunny/jquery-ui.css" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
+    <script src="~/js/tether.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/scrollPosStyler.js"></script>
+    <script src="~/js/swiper.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/nivo-lightbox.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/core.js"></script>
+    <link href="~/Scripts/Canlendar/main.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/print.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/SketChy.css" rel="stylesheet" />
+    <link href="~/Scripts/Canlendar/FullCalendarBootstrap.css" rel="stylesheet" />
+    <style>
+        h2 h3 h4 {
+            font-family: Microsoft JhengHei UI;
+            font-weight: inherit;
+        }
+
+        .modal {
+            top: 10%;
+        }
+
+        .fc-h-event .fc-event-main {
+            color: black !important;
+        }
+
+        #calendar, fieldset, legend {
+            min-width: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin-bottom: .5rem;
+            font-size: 1.5rem;
+            line-height: inherit;
+            color: inherit;
+            white-space: normal;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .modal-header button {
+            display: none !important;
+        }
+
+        .fc-theme-standard .fc-scrollgrid {
+            border: 2px solid #333;
+        }
+
+        .fc-scrollgrid {
+            border-radius: 5px 25px 5px 25px/25px 5px 25px 5px;
+        }
+
+        .Coach {
+            background-color:cornflowerblue !important;
+        }
+
+        .beConfirmed {
+            background-color: gold !important;
+        }
+
+        .Confirm {
+            background-color: greenyellow !important;
+        }
+
+        .defined {
+            background-color: #F5B0C7 !important;
+        }
+        .fc-scroller {
+            overflow-y: scroll !important;
+            overflow-x: hidden !important;
+        }
+
+        html {
+            overflow-x: hidden !important;
+        }
+        .bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -999;
+        }
+
+            .bg img {
+                min-height: 100%;
+                width: 100%;
+            }
+    </style>
+</head>
+<body bgcolor="#091724" id="page-top">
+    <div class="bg">
+        <img src="~/Images/GYM3.jpg" style="z-index:-1; position:absolute; opacity:0.6; width:100vw" />
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position:fixed;top:0px;width:120%;z-index:99999;background-color:#333 !important;left:-10px;">
+        <a class="navbar-brand" href="#" style="text-transform:uppercase">FITNESS <span style="color:red">santé</span></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/Coach/ViewCoach">教練團隊</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Member/Login">行事曆</a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" style="top:40px;">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Clarence Taylor</span>
+            <span class="d-none d-lg-block"><a href="#Login" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#Login"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="@Model.Cmember.fMemberPicture" alt="" /></a></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/Member/Login">學員行事曆</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/Coach/ViewCoach">教練團隊</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/Fitness/Index">回首頁</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/Member/Logout">登出</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills"></a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests"></a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards"></a></li>
+            </ul>
+        </div>
+        <div>
+
+        </div>
+    </nav>
+
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+        <!-- About-->
+        <section class="resume-section" id="Calendar" style="margin-top:150px;margin-left:150px;">
+            <div class="row" style="position: relative;">
+                <h4 style="padding-left:1100px"><span style="background-color: gold">待確認</span>&nbsp;<span style="background-color:greenyellow">確認</span>&nbsp;<span style="background-color: cornflowerblue">教練休假</span></h4>
+
+                <h2 style="padding-left:350px ;">教練行事曆</h2><h2 style="color:#cd2323">(Coach Schedule)</h2>
+                <div id="calendar" style="margin-top:20px;width:80%;"></div>
+                <div id="MemberDialog" class="modal fade" role="dialog">
+                    <input type="hidden" id="eventid" />
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title t1" style="font-family: 'Microsoft JhengHei UI';color:black; font-weight:bolder;">學員預約時間<span style="font-family: Cabin Sketch, cursive;">(Booking your time)</span></h4>
+                            </div>
+                            <div class="modal-body">
+                                <div id="memberDiv">
+                                    <p class="p">開始時間</p>
+                                    <select id="StartTime">
+                                        @{
+                                            for (int i = 0; i <= 23; i++)
+                                            {
+                                                string t = i.ToString();
+                                                if (i < 10)
+                                                {
+                                                    t = string.Concat("0", i.ToString());
+                                                }
+                                                <option value="@t">@t</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="badge badge-secondary">時</span>
+                                    <select id="StartMin">
+                                        @{
+                                            for (int i = 0; i <= 59; i = i + 15)
+                                            {
+                                                string t = i.ToString();
+                                                if (i < 10)
+                                                {
+                                                    t = string.Concat("0", i.ToString());
+                                                }
+                                                <option value="@t">@t</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="badge badge-secondary">分</span><span id="block4" style="color:crimson"></span>
+                                    <p class="p">結束時間</p>
+                                    <select id="EndTime">
+                                        @{
+                                            for (int i = 0; i <= 23; i++)
+                                            {
+                                                string t = i.ToString();
+                                                if (i < 10)
+                                                {
+                                                    t = string.Concat("0" + i.ToString());
+                                                }
+                                                <option value="@t">@t</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="badge badge-secondary">時</span>
+                                    <select id="EndMin" style="color:black;" disabled>
+                                        @{
+                                            for (int i = 0; i <= 59; i = i + 15)
+                                            {
+                                                string t = i.ToString();
+                                                if (i < 10)
+                                                {
+                                                    t = string.Concat("0", i.ToString());
+                                                }
+                                                <option value="@t">@t</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="badge badge-secondary">分</span>
+                                    <p class="p">健身房名稱</p>
+                                    <select id="GymName"></select>  <a target="_blank" href="/GoogleMapForStudio/displayPage" style="font-size:14px;color:steelblue;">查看地圖</a>
+                                    <span id="block5" style="color:crimson"></span>
+
+                                    <p class="p">訓練部位</p>
+                                    <input type="text" id="tposition" /><span id="block6" style="color:crimson"></span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="deleteBtn" type="button" style="display:none" class="btn btn-danger" data-dismiss="modal">刪除</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                                <button id="send" type="button" class="btn btn-success" data-dismiss="modal">確定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="CoachDialog" class="modal fade" role="dialog">
+                <input type="hidden" id="eventid" />
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title t1">教練排休時間<br /> (Coach RestTime)</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="p">
+                                描述： <span id="cDescription" style="color:brown"></span>
+                            </div>
+                            <div class="p">
+                                開始時間： <span id="cStartDate"></span>
+                            </div>
+                            <div class="p">
+                                結束時間： <span id="cEndDate"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="send" type="button" class="btn btn-success" data-dismiss="modal">關閉</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+
+
+    </div>
+    <!--行事曆-->
+
+    <script src="~/Scripts/Canlendar/fullcalendar.min.js"></script>
+    <script src="~/Scripts/Canlendar/main.min.js"></script>
+    <script src="~/Scripts/Canlendar/moment.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var CoachID = '@ViewBag.CoachID';
+        var MemberID= '@ViewBag.MemberID';
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                locale: 'zh-tw',
+                eventStartEditable: false,
+                //initialDate: '2020-09-01',
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: true,
+                selectable: true,
+                displayEventEnd:true,
+                eventDragStart: function () {
+                return false;
+                },
+                eventResize: function (info) {
+                alert(info.event.title + " end is now " + info.event.end.toISOString());
+
+                    if (!confirm("is this okay?")) {
+                        info.revert();
+                    }
+                },
+                dateClick: function (info) {//新增
+                    $('#MemberDialog').modal();
+                    $('#deleteBtn').hide();
+                      $('#send').show();
+                    $('#eventid').val('');
+                    SetGym(); //生健身房下拉式選單
+                    $('#StartTime').val('00');
+                    $('#StartMin').val('00');
+                    $('#EndTime').val('00');
+                    $('#EndMin').val('00');
+                    $('#tposition').val('');
+                    $('#GymName').val('');
+                    $("#block4").text('');
+                    $("#block5").text('');
+                    $("#block6").text('');
+                    $("#EndTime option").hide();
+                    $("#EndTime option:eq(1)").show();
+                    $("#EndTime option:eq(2)").show();
+
+                    $('#send').unbind().click(function () {
+                        if (!Verify()) {
+                            return false;
+                        }
+                        var starttime = $('#StartTime').val() + ':' + $('#StartMin').val() + ':00';
+                        var endtime = $('#EndTime').val() + ':' + $('#EndMin').val() + ':00';
+                        var sdate = new Date(info.dateStr + 'T' + starttime);
+                        var edate = new Date(info.dateStr + 'T' +endtime);
+                         $.ajax({
+                            url: '@Href("~/Canlendar/UpdateOrder")',
+                             dataType: 'text',
+                             data: { 'datestr': info.dateStr, 'sdate': $('#StartTime').val(), 'edate': $('#EndTime').val(), 'gymId': $('#GymName').val(), 'tposition': $('#tposition').val(), 'smdate': $('#StartMin').val(), 'dmdate': $('#EndMin').val(), 'eventid': $('#eventid').val(),'coachid':CoachID,'memberid':MemberID},
+                             success: function (data) {
+                                 if (data != "") {
+                                     alert(data);
+                                 } else {
+                                     swal("課程預訂中", "Course booking", "info");
+                                    calendar.refetchEvents();
+                                 }
+                            }
+                         });
+
+                    });
+
+                },
+                eventClick: function (info) { //修改
+                    //console.log(info.event);
+                     $('#send').show();
+                    if (info.event.groupId != '') {//教練
+                        $('#CoachDialog').modal();
+                        $('#cDescription').text(info.event.extendedProps.Description  );
+                        $('#cStartDate').text(info.event.extendedProps.StartDate);
+                        $('#cEndDate').text(info.event.extendedProps.EndDate);
+
+                    } else {//學員
+                          $('#MemberDialog').modal();
+                          $('#deleteBtn').show();
+                            //點事件，給id
+                          $('#eventid').val(info.event.id);
+                           SetGym(); //生健身房下拉式選單
+                           GetEventData(info);//長資料的事件
+                            if (info.event.extendedProps.OrderStatus=="1") {
+                                $('#send').hide();
+                            }
+                            $('#send').unbind().click(function () {
+                                 $.ajax({
+                                    url: '@Href("~/Canlendar/UpdateOrder")',
+                                     dataType: 'text',
+                                     data: { 'datestr':info.dateStr, 'sdate': $('#StartTime').val(), 'edate': $('#EndTime').val(), 'gymId': $('#GymName').val(), 'tposition': $('#tposition').val(), 'smdate': $('#StartMin').val(), 'dmdate': $('#EndMin').val(), 'eventid': $('#eventid').val(),'coachid':CoachID,'memberid':MemberID},
+                                     success: function (data) {
+                                         swal("修改課程成功", "You have modified the course successfully", "success");
+                                         calendar.refetchEvents();
+                                    }
+                                 });
+                            });
+                    }
+
+                },
+                eventTimeFormat: { // like '14:30:00'
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                },
+                  eventContent:function(info) {
+                    //console.log(event);
+                    return {
+                        html:  info.timeText  + '<br />'
+                              +  info.event.extendedProps.Gym
+                    }
+                },
+                events: function (info, successCallback, failureCallback) {
+                        $.ajax({
+                            url: '@Href("~/Canlendar/GetTbookData")',
+                            data: {'memberid':MemberID,'coachid':CoachID},
+                            dataType: 'json',
+                            success: function (data) {
+                                //console.log(data);
+                                var eventArray = [];
+                                $(data).each(function (index, item) {
+                                    //console.log(item.start + "     " +  item.end)
+                                    //alert(item.OrderStatus );
+                                    var color = item.OrderStatus;
+                                    if (item.OrderStatus == "0") {
+                                        color = "beConfirmed";
+                                    } else if (item.OrderStatus == "1") {
+                                        color = "Confirm";
+                                    }
+                                    if (item.type == 'member') {
+                                          eventArray.push({
+                                            "id": item.groupId,
+                                            "title":item.GymName,
+                                            "start":item.start  ,
+                                            "end": item.end,
+                                            "className": color,
+                                            "color": item.color,
+                                            "Gym": item.GymName,
+                                            'OrderStatus':item.OrderStatus
+                                        });
+                                    } else if (item.type == 'coach') {
+                                           eventArray.push({
+                                               "groupId": item.groupId,
+                                               "title":item.GymName,
+                                               "start":item.start  ,
+                                               "end": item.end,
+                                               "color": item.color,
+                                               "className": 'Coach',
+                                               "StartDate": item.start,
+                                               "EndDate": item.end,
+                                               "Description": item.GymName,
+                                                   "Gym": item.GymName,
+
+                                        //"className" :['Coach','aaa']
+                                    });
+
+                                    }
+                                });
+
+                                successCallback(eventArray);
+
+                            }
+                        });
+
+               }
+            });
+
+            calendar.render();
+        });
+
+        //撈回事件資料
+        function GetEventData(info) {
+            $.ajax({
+                url: '@Href("~/Canlendar/GetTbookDataByid")',
+                dataType: 'json',
+                async: false,
+                data: { 'id': info.event.id, 'coachid': CoachID, 'memberid': MemberID },
+                success: function (data) {
+                    //console.log(data);
+                    $(data).each(function (index, item) {
+                        if (item.groupId != '') {
+                            $('#StartTime').val(item.start.substring(11, 13));
+                            $('#StartMin').val(item.start.substring(14, 16));
+                            $('#EndTime').val(item.end.substring(11, 13));
+                            $('#EndMin').val(item.end.substring(14, 16));
+                            $('#tposition').val(item.TrainingName);
+                            $('#GymName').val(item.GymId);
+                        }
+                    });
+
+                }
+            });
+
+                     //刪除 傳送給前端
+            $('#deleteBtn').unbind().click(function () {
+                swal({
+                    title: "您確定刪除課程?",
+                    text:"Are you sure you want to delete the course?",
+                    icon: "warning",
+                    buttons: {
+                        Btn: false,
+                        cancel: {
+                            text: "取消",
+                            visible: true,
+                            value: "cancel"
+
+                        },
+                        danger: {
+                            text: "確定",
+                            visible: true,
+                            value: "sure"
+                        }
+                    }
+                }).then((value) => {
+                    switch (value) {
+                        case "cancel":
+                            swal("刪除失敗", "You failed to delete the class", "error");
+                            break;
+                        case "sure":
+                            swal("刪除成功", "You have successfully deleted the class", "success");
+                            $.ajax({
+                            url: '@Href("~/Canlendar/DeleteTbookData")',
+                            dataType: 'text',
+                            async:false,
+                            data: {'id':info.event.id},
+                            success: function (data) {
+                            info.event.remove();
+                            }
+                           });
+                    }
+
+                });
+
+            });
+
+        }
+
+        //生健身房下拉式選單
+        function SetGym() {
+
+               $.ajax({
+                    url: '@Href("~/Canlendar/GetGymName")',
+                        dataType: 'json',
+                        async:false,
+                        success: function (data) {
+                            $('#GymName').empty();
+                            $('#GymName').change(function () { $("#block5").text(''); });
+                            $('#GymName').append('<option value="">請選擇</option>');
+                            $(data).each(function (index, item) {
+                                $('#GymName').append('<option value="'+item.GymId+'">'+item.GymName+'</option>');
+                            });
+                    }
+                    });
+        }
+
+        $(function () {
+            $('#StartTime').change(function () {
+                var selectedIndex = $(this).prop('selectedIndex');
+                if (selectedIndex == 23) { selectedIndex = -1;}
+                $("#EndTime").prop('selectedIndex', selectedIndex + 1);
+                $("#EndTime option").hide();
+                $("#EndTime option:eq(" + (selectedIndex + 1)+")").show();
+                $("#EndTime option:eq(" + (selectedIndex + 2) + ")").show();
+                $("#block4").text('');
+            });
+            $('#StartMin').change(function () {
+                $('#EndMin').val($(this).val());
+            });
+
+        });
+
+        function Verify() {
+
+            if ($('#StartTime').val() == $('#EndTime').val()) {
+                $("#block4").text('請選擇訓練起始時間');
+                return false;
+            }
+            if ($('#GymName').val() == '') {
+                $("#block5").text('請選擇訓練地點');
+                return false;
+            }
+
+            if ($('#tposition').val() == '') {
+                $("#block6").text('請說明訓練部位');
+                return false;
+            }
+            return true;
+        }
+
+
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts.js"></script>
+</body>
+</html>

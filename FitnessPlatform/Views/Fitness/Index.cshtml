@@ -1,0 +1,743 @@
+﻿@model FitnessPlatform.tMember
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Fitness santé</title>
+        <link rel="icon" href="url('@Url.Content("~/imgsanté.jpg")')">
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/custom.css" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/loaders.css">
+        <link rel="stylesheet" href="~/css/swiper.min.css">
+        <link rel="stylesheet" href="~/css/animate.min.css">
+        <link rel="stylesheet" href="~/css/nivo-lightbox.css">
+        <link rel="stylesheet" href="~/css/nivo_themes/default/default.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <script src="~/js/jquery.min.js"></script>
+        <script src="~/js/tether.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/scrollPosStyler.js"></script>
+        <script src="~/js/swiper.min.js"></script>
+        <script src="~/js/isotope.min.js"></script>
+        <script src="~/js/nivo-lightbox.min.js"></script>
+        <script src="~/js/wow.min.js"></script>
+        <script src="~/js/core.js"></script>
+
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="749357365237-p74a1i3qt2b71kern9jq25bj014if4bh.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <style>
+            .nav-link {
+                font-size: 22px !important;
+                padding-top: 5px;
+                margin-top: 6px;
+            }
+
+            .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+                color: #fff;
+                background-color: #cd2323;
+            }
+
+            .form-control-sm, .input-group-sm > .form-control, .input-group-sm > .input-group-addon, .input-group-sm > .input-group-btn > .btn {
+                border-radius: .5rem;
+                border-color: #cd2323;
+            }
+
+            .login1:hover {
+                color: #cd2323;
+            }
+
+            .login1 {
+                color: #cd2323;
+            }
+
+            .login2, .btn-outline-info {
+                color: #cd2323;
+                border-color: #cd2323;
+                background-color: transparent;
+            }
+
+                .login2:hover, .btn-outline-info:hover {
+                    color: #fff;
+                    background-color: #cd2323;
+                    border: #cd2323;
+                }
+            h2 h3 h4 {
+                font-family: Microsoft JhengHei UI;
+                font-weight: inherit;
+            }
+            img.clickimage {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <!--google api login-->
+        <script>
+            function onSignIn(googleUser) {
+                // Useful data for your client-side scripts:
+                var profile = googleUser.getBasicProfile();
+                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                console.log('Full Name: ' + profile.getName());
+                console.log('Given Name: ' + profile.getGivenName());
+                console.log('Family Name: ' + profile.getFamilyName());
+                console.log("Image URL: " + profile.getImageUrl());
+                console.log("Email: " + profile.getEmail());
+                window.location.href("");
+                // The ID token you need to pass to your backend:
+                var id_token = googleUser.getAuthResponse().id_token;
+                console.log("ID Token: " + id_token);
+            }
+        </script>
+        <!-- Swiper Silder
+    ================================================== -->
+        <!-- Slider main container -->
+        <div class="swiper-container main-slider" id="HomePage">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slider-bg-position" style="background:url('@Url.Content("~/img/1.jpg")')" data-hash="slide1">
+                    <h2></h2>
+                </div>
+                <div class="swiper-slide slider-bg-position" style="background:url('@Url.Content("~/img/3.jpg")')" data-hash="slide2">
+                    <h2>Fitness Santé</h2>
+                </div>
+                <div class="swiper-slide slider-bg-position" style="background:url('@Url.Content("~/img/4.jpg")')" data-hash="slide1">
+                    <h2>加入會員買10堂課 送2堂1對1教練課程</h2>
+                </div>
+            </div>
+        </div>
+        <!-- We Offer
+    ================================================== -->
+        <section id="WeOffer" class="service-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-center text-center">
+                            <h2>We Offer</h2>
+                            <h5>我們提供了多項快速服務!</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="service">
+                                    <div class="icon-holder">
+                                        <img src="~/img/o1.png" alt="" class="icon">
+                                    </div>
+                                    <h4 class="heading">一般運動</h4>
+                                    <p class="description">
+                                        一般的運動能夠讓你在工作時，更有效率並保持活力！
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="service">
+                                    <div class="icon-holder">
+                                        <img src="~/img/o2.png" alt="" class="icon">
+                                    </div>
+                                    <h4 class="heading">隨時隨地都能快速找到健身房</h4>
+                                    <p class="description"> 我們的APP與健身房結合Google Map，能夠讓你更快速選擇健身地點。</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="service">
+                                    <div class="icon-holder">
+                                        <img src="~/img/o3.png" alt="" class="icon">
+                                    </div>
+                                    <h4 class="heading">健身課程</h4>
+                                    <p class="description">結合教練、場地和時間配合讓你運動更方便預約！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cut cut-bottom"></div>
+                </div>
+            </div>
+        </section>
+        <!-- About
+    ================================================== -->
+        <section class="about-sec parallax-section" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2>
+                            <small>Who We Are</small>關於我們<br>
+                            --
+                        </h2>
+                    </div>
+                    <div class="col-md-4">
+                        <p>要享受健康，為家人帶來真正的幸福，為所有人帶來和平，必須首先紀律和控制自己的思想。如果一個人能夠控制自己的思想，他就能找到通往啟蒙的道路，所有的智慧和美德都會自然地降臨到他身上。</p>
+                        <p>拯救我們的星球，使人們擺脫貧困，促進經濟增長……這些是同一場鬥爭。我們必須將氣候變化，水資源短缺，能源短缺，全球健康，糧食安全和增強婦女權能之間的點聯繫起來。一個問題的解決方案必須是所有人的解決方案。</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>我們最大的幸福並不取決於機會給我們帶來的生活條件，而始終是良心，健康，職業和自由在所有正義追求中的結果。</p>
+                        <p>掌控自己的生活，對日常挑戰抱有現實的期望，這是壓力管理的關鍵，壓力管理可能是幸福，健康和有意義的生活的最重要因素。</p>
+                        <p><a href="#" class="btn btn-transparent-white btn-capsul">Explore More</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG
+    ================================================== -->
+
+        <section class="blog-sec" id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-md-center text-xs-center">
+                            <h2>News</h2>
+                            <h5>知識分享</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 blog-box">
+                        <div class="blog-image-block"> <img src="~/img/news1.png" alt="" class="img-fluid"> </div>
+                        <h3 class="blog-title"><small>Tips</small><a href="#">冷靜的頭腦帶來內在的力量</a></h3>
+                        <p class="blog-content">我們最大的幸福並不取決於生活條件</p>
+                    </div>
+                    <div class="col-md-4 blog-box">
+                        <div class="blog-image-block"> <img src="~/img/news2.png" alt="" class="img-fluid"> </div>
+                        <h3 class="blog-title"><small>Benefits</small><a href="#">幸福無非是身體健康</a></h3>
+                        <p class="blog-content">我們最大的幸福並不取決於生活條件</p>
+                    </div>
+                    <div class="col-md-4 blog-box">
+                        <div class="blog-image-block"> <img src="~/img/news3.png" alt="" class="img-fluid"> </div>
+                        <h3 class="blog-title"><small>Products</small><a href="#">完全平等和獨立</a></h3>
+                        <p class="blog-content">我們最大的幸福並不取決於生活條件</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- VIDEO
+    ================================================== -->
+        <section class="video-sec parallax-section">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.5s">Watch the video<small>沒有健康，生命就不是生命；它只是語言和痛苦的狀態-死亡的象徵。</small></h2>
+                        <a href="#"><i class="fa fa-play"></i></a> <small><em>--</em></small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery-sec" id="gallery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-md-center text-xs-center">
+                            <h2>Fitness Santé Gallery</h2>
+                            <h5>相簿分享</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- iso section -->
+                        <div class="iso-section text-md-center text-xs-center" data-wow-delay="0.5">
+                            <ul class="filter-wrapper clearfix">
+                                <li><a href="#" data-filter="*" class="selected opc-main-bg">全部</a></li>
+                                <li><a href="#" class="opc-main-bg" data-filter=".london">據點</a></li>
+                                <li><a href="#" class="opc-main-bg" data-filter=".paris">健身</a></li>
+                                <li><a href="#" class="opc-main-bg" data-filter=".ny">場地</a></li>
+                                <li><a href="#" class="opc-main-bg" data-filter=".hn">學員</a></li>
+                            </ul>
+
+                            <!-- iso box section -->
+                            <div class="iso-box-section wow fadeInUp" data-wow-delay="0.9s">
+                                <div class="iso-box-wrapper col4-iso-box">
+                                    <div class="iso-box london paris ny col-md-4 col-sm-6">
+                                        <div class="gallery-thumb">
+                                            <a href="~/img/Gallery1.png" data-lightbox-gallery="food-gallery">
+                                                <img src="~/img/Gallery1.png" class="fluid-img" alt="Gallery">
+                                                <div class="gallery-overlay">
+                                                    <div class="gallery-item"> <i class="fa fa-search"></i> </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="iso-box london ny hn col-md-4 col-sm-6">
+                                        <div class="gallery-thumb">
+                                            <a href="~/img/Gallery2.png" data-lightbox-gallery="food-gallery">
+                                                <img src="~/img/Gallery2.png" class="fluid-img" alt="Gallery">
+                                                <div class="gallery-overlay">
+                                                    <div class="gallery-item"> <i class="fa fa-search"></i> </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="iso-box hn col-md-4 col-sm-6">
+                                        <div class="gallery-thumb">
+                                            <a href="~/img/Gallery3.png" data-lightbox-gallery="food-gallery">
+                                                <img src="~/img/Gallery3.png" class="fluid-img" alt="Gallery">
+                                                <div class="gallery-overlay">
+                                                    <div class="gallery-item"> <i class="fa fa-search"></i> </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="iso-box london col-md-4 col-sm-6">
+                                        <div class="gallery-thumb">
+                                            <a href="~/img/Gallery4.png" data-lightbox-gallery="food-gallery">
+                                                <img src="~/img/Gallery4.png" class="fluid-img" alt="Gallery">
+                                                <div class="gallery-overlay">
+                                                    <div class="gallery-item"> <i class="fa fa-search"></i> </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="iso-box ny col-md-4 col-sm-6">
+                                        <div class="gallery-thumb">
+                                            <a href="~/img/Gallery5.png" data-lightbox-gallery="food-gallery">
+                                                <img src="~/img/Gallery5.png" class="fluid-img" alt="Gallery">
+                                                <div class="gallery-overlay">
+                                                    <div class="gallery-item"> <i class="fa fa-search"></i> </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="iso-box paris lunch col-md-4 col-sm-6">
+                                        <div class="gallery-thumb">
+                                            <a href="~/img/Gallery6.png" data-lightbox-gallery="food-gallery">
+                                                <img src="~/img/Gallery6.png" class="fluid-img" alt="Gallery">
+                                                <div class="gallery-overlay">
+                                                    <div class="gallery-item"> <i class="fa fa-search"></i> </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--塞選評分最好的教練-->
+        @{
+            string b = "";
+            string c = "";
+            string d = "";
+            var a = ViewBag.coachimg as List<string>;
+            if (a.Count > 1)
+            {
+
+                b = a[0];
+                c = a[1];
+                d = a[2];
+            }
+
+        }
+        <!--==============================================-->
+        <section class="trainer-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading text-md-center text-xs-center">
+                            <h2>Coach</h2>
+                            <h5>教練團隊</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-trainer-item">
+                            <img src="@b" alt="">
+                            <div class="trainer-text">
+                                <h5>Stark</h5>
+                                <span>Leader (專業講師)</span>
+                                <p>TRX STC 懸吊系統訓練</p>
+                                <p>AFAA PTF 體適能專家</p>
+                                <p>Boxercise Level 1-3拳擊適能</p>
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-trainer-item">
+                            <img src="@c" alt="">
+                            <div class="trainer-text">
+                                <h5>Alice</h5>
+                                <span>Gym coach</span>
+                                <p>女性體態雕塑</p>
+                                <p>肌力訓練指導</p>
+                                <p>健力</p>
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-trainer-item">
+                            <img src="@d" alt="">
+                            <div class="trainer-text">
+                                <h5>Justin</h5>
+                                <span>Gym coach</span>
+                                <p>中華民國C級健身指導員證</p>
+                                <p>動作矯正</p>
+                                <p>銀髮族體適能訓練</p>
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trainer Section End -->
+
+        <section class="contact-sec" id="contact">
+            <div class="container">
+                <h2>快加入我們吧！ <small>我們的工作展現了我們的能力！</small> </h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleName">姓名</label>
+                            <input type="text" class="form-control" id="exampleName" aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="examplePhone">手機</label>
+                            <input type="text" class="form-control" id="examplePhone" aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">信箱</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">我們不會將任何資訊透漏任何人</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">密碼</label>
+                            <input type="email" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">我們不會將任何資訊透漏任何人</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">身分證字號</label>
+                            <input type="email" class="form-control" id="exampleInputGID" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">我們不會將任何資訊透漏任何人</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">生日</label>
+                            <input type="email" class="form-control" id="exampleInputBirth" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">可以不必填寫</small>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="exampleTextarea">請附上一張專業證照</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-12 text-xs-center action-block">
+                        <a href="javascript:void(0)" id="submitcoach" class="btn btn-capsul btn-aqua ">Submit</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            $("#submitcoach").click(function () {
+                console.log($("#submitcoach").html())
+                if ($("#exampleName").val() != "" && $("#examplePhone").val() != "" && $("#exampleInputEmail1").val() != "" && $("#exampleInputPassword").val() != "" && $("#exampleInputGID").val() != "" && $("#exampleTextarea").val() != "") {
+
+                    $("#submitcoach").attr("href", `/Coach/Signup/?fCoachName=${$("#exampleName").val()}&&fCoachPhone=${$("#examplePhone").val()}&&fCoachMail=${$("#exampleInputEmail1").val()}&&fCoachPassword=${$("#exampleInputPassword").val()}&&fCoachGID=${$("#exampleInputGID").val()}&&fCoachLicense=${$("#exampleTextarea").val()}`)
+                    console.log($("#examplePhone").val())
+                }
+            })
+
+        </script>
+        <!--Login
+    ===================================================-->
+        <!--Modal: Login / Register Form-->
+        <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog cascading-modal" role="document">
+                <!--Content-->
+                <div class="modal-content">
+
+                    <!--Modal cascading tabs-->
+                    <div class="modal-c-tabs">
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs md-tabs tabs-2 light-orange darken-3" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active login1" data-toggle="tab" href="#panel7" role="tab">
+                                    <i class="fas fa-user mr-1"></i>
+                                    Login
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link login1" data-toggle="tab" href="#panel8" role="tab">
+                                    <i class="fas fa-user-plus mr-1"></i>
+                                    Register
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panels -->
+                        <div class="tab-content">
+                            <!--Panel 7-->
+
+                            <form method="post" action="/Member/Login" class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                                <!--Body-->
+                                <div class="modal-body mb-5">
+
+                                    <div class="md-form form-sm mb-4">
+
+                                        <input type="email" name="account" id="account" class="form-control form-control-md validate">
+                                        <label data-error="wrong" data-success="right" for="modalLRInput10">信箱 <i class="fas fa-envelope"></i></label>
+                                    </div>
+
+                                    <div class="md-form form-sm mb-3">
+                                        <input type="password" name="password" id="password" class="form-control form-control-md validate">
+                                        <label data-error="wrong" data-success="right" for="modalLRInput11">密碼 <i class="fas fa-lock"></i></i></label>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <input id="Login" type="submit" value="Login" class="btn btn-default login2" style="width:250px;height:41px"/>
+                                    </div>
+                                    <div class="text-center mt-2">
+                                        <div style="padding-right:30px;padding-top:10px">
+                                            <p class="g-signin2 btn btn-default" data-onsuccess="onSignIn" data-theme="dark" style="width:250px;height:41px;"></p>
+                                        </div>
+                                        <p><img src="~/Images/twitter3.png" style="width:250px;height:41px; margin-top:20px " class="clickimage" /></p>
+                                        <p><img src="~/Images/unnamed.png" class="clickimage" style="margin-top:20px" /></p>
+
+                                    </div>
+                                </div>
+                                <!--Footer-->
+                                <div class="modal-footer">
+                                    <div class="options text-center text-md-right mt-1">
+                                        <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+                                        <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                            <!--/.Panel 7-->
+                            <!--Panel 8-->
+                            <form method="post" action="/Member/Signup" class="tab-pane fade" id="panel8" role="tabpanel">
+
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="md-form form-sm mb-1">
+                                        <div>姓名</div>
+                                        <div class="lab-1">
+                                            @Html.EditorFor(model => model.fMemberName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="md-form form-sm mb-1">
+                                        <div>性別</div>
+                                        <div class="lab-2">
+                                            @Html.EditorFor(model => model.fMemberGender, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberGender, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="md-form form-sm mb-1">
+                                        <div>生日</div>
+                                        <div class="lab-3">
+                                            @Html.EditorFor(model => model.fMemberBirthday, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberBirthday, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="md-form form-sm mb-1">
+                                        <div>身分證字號</div>
+                                        <div class="lab-4">
+                                            @Html.EditorFor(model => model.fMemberCID, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberCID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="md-form form-sm mb-1">
+                                        <div>電話號碼</div>
+                                        <div class="lab-5">
+                                            @Html.EditorFor(model => model.fMemberPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberPhone, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="md-form form-sm mb-1">
+                                        <div>地址</div>
+                                        <div class="lab-6">
+                                            @Html.EditorFor(model => model.MemberAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MemberAddress, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="md-form form-sm mb-1">
+                                        <div>電子信箱</div>
+                                        <div class="lab-7">
+                                            @Html.EditorFor(model => model.fMemberEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberEmail, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="md-form form-sm mb-1">
+                                        <div>密碼</div>
+                                        <div class="lab-8">
+                                            @Html.EditorFor(model => model.fMemberPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.fMemberPassword, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="text-center form-sm mt-2">
+                                        <input id="signup" type="submit" value="Create" class="btn btn-default login2" />
+                                    </div>
+
+                                </div>
+                                <!--Footer-->
+                                <div class="modal-footer">
+                                    <div class="options text-right">
+                                        <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                            <!--/.Panel 8-->
+                        </div>
+
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+
+        <!-- Top Navigation -->
+        <nav class="navbar navbar-toggleable-md mb-4 top-bar navbar-static-top sps sps--abv">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand" href="#" style="margin-bottom:10px;">Fitness <span>santé</span></a>
+                <div class="dropdown ">
+                    <a style="margin-bottom:10px;" class="navbar-brand" href="#HomePage" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @*style="background-color:transparent;border:hidden;color:white"*@>
+                        首頁@*<i class="fas fa-sort-down"></i>*@&ensp;<i class="fas fa-angle-double-down"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#WeOffer">我們提供</a>
+                        <a class="dropdown-item" href="#about">關於我們</a>
+                        <a class="dropdown-item" href="#blog">優質教練</a>
+                        <a class="dropdown-item" href="#gallery">相簿</a>
+                        <a class="dropdown-item" href="#contact">加入我們</a>
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse1">
+                    <ul class="navbar-nav ml-auto">
+                        @*<li class="nav-item active"> <a class="nav-link" href="#HomePage">首頁 <span class="sr-only">(current)</span></a> </li>*@
+                        <li class="nav-item"> <a class="nav-link" href="~/Coach/ViewCoach">教練團隊</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="https://www.fitnesssante5.com/challenges">挑戰賽</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="https://www.fitnesssante5.com/news">文章分享</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="~/TDEE/Calculate">TDEE計算機</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="~/GoogleMapForStudio/displayPage">營業據點</a> </li>
+                        @{
+                            if (Session[FitnessPlatform.ViewModel.CDictionary.user_using_id] == null && Session[FitnessPlatform.ViewModel.CDictionary.coach_using_id] == null)
+                            {
+                                <li class="nav-item"> <a class="nav-link" a href="#Login" data-toggle="modal" data-target="#Login" style="color:#cd2323;font-weight:800 !important;">註冊/登入</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="LoginDialog" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title t1" style="font-family: 'Microsoft JhengHei UI';color:#cd2323;font-size:26px;margin-top:0.7rem !important;">註冊／登入</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="LoginDiv">
+                            <div class="row" style="margin-bottom:10px;">
+                                <label style="margin-top:5px">帳號</label>
+                                <input type="text" id="account" name="account" class="form-control" style="width:80%" />
+                            </div>
+                            <div class="row" style="margin-bottom:10px;">
+                                <label style="margin-top:5px">密碼</label>
+                                <input type="text" id="password" name="password" class="form-control" style="width:80%" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                        <button id="send" data-type="Login" type="button" class="btn btn-success btnlogin" data-dismiss="modal" style="color:#cd2323;font-size:26px;margin-top:0.7rem !important;">登入</button>
+                        <button id="register" data-type="Signup" type="button" class="btn btn-warning btnlogin" data-dismiss="modal" style="color:#cd2323;font-size:26px">註冊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-4">
+                        <ul>
+                            <!--<li><a href="#">首頁</a></li>
+                        <li><a href="#">我們提供</a></li>-->
+                            <!--<li><a href="#">關於我們</a></li>-->
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <ul>
+                            <!--<li><a href="#">Blog</a></li>
+                        <li><a href="#">Image Gallery</a></li>-->
+                            <!--<li><a href="#">加入我們</a></li>-->
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <ul>
+                            <!--<li><a href="#">隱私權條款</a></li>
+                        <li><a href="#">Term and Services</a></li>-->
+                            <!--<li><a href="#">About Burnout</a></li>-->
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h2></h2>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row copy-footer">
+                    <div class="col-sm-6 col-md-3">
+                        &copy;
+                        <script type="text/javascript">document.write(new Date().getFullYear());</script> <a target="_blank" rel="nofollow" href="https://grafreez.com/"></a> Grafreez.com
+                    </div>
+                    <div class="col-sm-6 col-md-3 pull-right text-xs-right">Created with Group 5</div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <script>
+            $('#dropdownMenuLink').click(function () {
+                $(this).next('.dropdown-menu').show();
+            });
+            $('.dropdown-item').click(function () {
+                $(this).parent().hide();
+            });
+        </script>
+
+    </body>
+</html>

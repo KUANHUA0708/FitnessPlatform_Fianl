@@ -1,0 +1,818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FitnessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tActivity">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" Nullable="false" />
+          <Property Name="ActivityId" Type="int" />
+          <Property Name="ActivityName" Type="nvarchar(max)" />
+          <Property Name="ActivityStartDate" Type="nvarchar(max)" />
+          <Property Name="ActivityEndDate" Type="nvarchar(max)" />
+          <Property Name="ActivityPeople" Type="nvarchar(max)" />
+          <Property Name="ActivityAddress" Type="nvarchar(max)" />
+          <Property Name="ActivityPrice" Type="money" />
+          <Property Name="ActivityPicture" Type="image" />
+          <Property Name="fAdminId" Type="int" />
+        </EntityType>
+        <EntityType Name="tAdmin">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" Nullable="false" />
+          <Property Name="fAdminIdName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fAdminGender" Type="nvarchar" MaxLength="2" />
+          <Property Name="fAdminAge" Type="int" />
+          <Property Name="fAdminCID" Type="nvarchar" MaxLength="50" />
+          <Property Name="fAdminBirthday" Type="datetime" />
+          <Property Name="fAdminPhone" Type="varchar" MaxLength="50" />
+          <Property Name="fAdminAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="fAdminEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="fAdminPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fAdminTime" Type="datetime" />
+          <Property Name="fAdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Fitness.dbo.tClass' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="tClass">
+          <Key>
+            <PropertyRef Name="TrainingId" />
+            <PropertyRef Name="TrainingName" />
+          </Key>
+          <Property Name="TrainingId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TrainingName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TrainingCount" Type="nchar" MaxLength="10" />
+          <Property Name="TrainingWeight" Type="nchar" MaxLength="10" />
+          <Property Name="TrainingRest" Type="nchar" MaxLength="10" />
+          <Property Name="fMemberId" Type="int" />
+          <Property Name="fCoachId" Type="int" />
+          <Property Name="fTrainingDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tCoach">
+          <Key>
+            <PropertyRef Name="fCoachID" />
+          </Key>
+          <Property Name="fCoachID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fCoachName" Type="nchar" MaxLength="10" />
+          <Property Name="fCoachGender" Type="nchar" MaxLength="2" />
+          <Property Name="fCoachBirthday" Type="datetime" />
+          <Property Name="fCoachGID" Type="nchar" MaxLength="10" />
+          <Property Name="fCoachPhone" Type="nchar" MaxLength="10" />
+          <Property Name="fCoachAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="fCoachMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="fCoachPassword" Type="nchar" MaxLength="20" />
+          <Property Name="fCoachimg" Type="nvarchar(max)" />
+          <Property Name="fCoachLicense" Type="nvarchar(max)" />
+          <Property Name="fCoachSuccess" Type="int" />
+        </EntityType>
+        <EntityType Name="tCoachRest">
+          <Key>
+            <PropertyRef Name="fRestId" />
+          </Key>
+          <Property Name="fRestId" Type="int" Nullable="false" />
+          <Property Name="fCoachId" Type="int" Nullable="false" />
+          <Property Name="fStartTime" Type="datetime" Nullable="false" />
+          <Property Name="fEndTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Fitness.dbo.tContacts' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="tContacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+            <PropertyRef Name="ContactName" />
+            <PropertyRef Name="ContactNo" />
+            <PropertyRef Name="AddedOn" />
+          </Key>
+          <Property Name="ContactID" Type="int" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Fitness.dbo.tFoodList' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="tFoodList">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" Nullable="false" />
+          <Property Name="fFoodName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fFoodCalories" Type="int" />
+          <Property Name="fFoodProtein" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fFoodFat" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fFoodCarbohydrate" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="tLesson">
+          <Key>
+            <PropertyRef Name="fLessonId" />
+          </Key>
+          <Property Name="fLessonId" Type="int" Nullable="false" />
+          <Property Name="fLessonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fLessontime" Type="nchar" MaxLength="5" />
+          <Property Name="fLessonRest" Type="nchar" MaxLength="5" />
+          <Property Name="fLessonWeight" Type="decimal" Precision="5" Scale="1" />
+        </EntityType>
+        <EntityType Name="tLessonAbout">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fLessonId" Type="int" />
+          <Property Name="flike" Type="tinyint" />
+          <Property Name="fabout" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tMember">
+          <Key>
+            <PropertyRef Name="fMemberId" />
+          </Key>
+          <Property Name="fMemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fMemberName" Type="nvarchar" MaxLength="20" />
+          <Property Name="fMemberGender" Type="nchar" MaxLength="10" />
+          <Property Name="fMemberAge" Type="tinyint" />
+          <Property Name="fMemberCID" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberBirthday" Type="datetime" />
+          <Property Name="fMemberPhone" Type="nchar" MaxLength="10" />
+          <Property Name="MemberAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fMemberPicture" Type="nvarchar(max)" />
+          <Property Name="fMember_approced" Type="nchar" MaxLength="1" />
+          <Property Name="fMember_Num" Type="nchar" MaxLength="10" />
+          <Property Name="fMember_time" Type="datetime" />
+          <Property Name="fMember_googleID" Type="int" />
+        </EntityType>
+        <EntityType Name="tOrder">
+          <Key>
+            <PropertyRef Name="fid" />
+          </Key>
+          <Property Name="fid" Type="int" Nullable="false" />
+          <Property Name="forderid" Type="int" Nullable="false" />
+          <Property Name="fMemberId" Type="int" Nullable="false" />
+          <Property Name="fCoachID" Type="int" Nullable="false" />
+          <Property Name="fLessonId" Type="int" Nullable="false" />
+          <Property Name="fSuccessed" Type="int" Nullable="false" />
+          <Property Name="fGynId" Type="int" Nullable="false" />
+          <Property Name="fStartTime" Type="datetime" Nullable="false" />
+          <Property Name="fEndTime" Type="datetime" Nullable="false" />
+          <Property Name="fTrainingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fApplyTime" Type="datetime" Nullable="false" />
+          <Property Name="fOrderlike" Type="int" />
+          <Property Name="fOrderAbout" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tRecord">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fRecordId" Type="int" />
+          <Property Name="fRecordFoodName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fRecordFoodCalories" Type="int" />
+          <Property Name="fRecordFoodProtein" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fRecordFoodFat" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fRecordCarbohydrate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fRecordDate" Type="date" />
+          <Property Name="fTimeId" Type="int" />
+          <Property Name="fTimeName" Type="nvarchar" MaxLength="10" />
+          <Property Name="fMemberId" Type="int" />
+        </EntityType>
+        <EntityType Name="tStudio">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" Nullable="false" />
+          <Property Name="fCorpName" Type="nvarchar" MaxLength="20" />
+          <Property Name="fTaxId" Type="char" MaxLength="8" />
+          <Property Name="fPhone" Type="varchar" MaxLength="20" />
+          <Property Name="fEmail" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="fPasswords" Type="char" MaxLength="20" />
+          <Property Name="fOwner" Type="nvarchar" MaxLength="20" />
+          <Property Name="fRepresentative" Type="nvarchar" MaxLength="20" />
+          <Property Name="fStudioNumber" Type="char" MaxLength="13" />
+          <Property Name="fCounty" Type="nvarchar" MaxLength="20" />
+          <Property Name="fDistrict" Type="nvarchar" MaxLength="20" />
+          <Property Name="fAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cfImage" Type="varchar" MaxLength="100" />
+          <Property Name="fLongitude" Type="real" />
+          <Property Name="fLatitude" Type="real" />
+          <Property Name="fRegisterTime" Type="date" />
+          <Property Name="fActivated" Type="bit" />
+          <Property Name="fNotification" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tTime">
+          <Key>
+            <PropertyRef Name="fTimeId" />
+          </Key>
+          <Property Name="fTimeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fEatTimeId" Type="nvarchar" MaxLength="10" />
+          <Property Name="fTimeName" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tLesson_tLesson">
+          <End Role="tLesson" Type="Self.tLesson" Multiplicity="1" />
+          <End Role="tLesson1" Type="Self.tLesson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tLesson">
+              <PropertyRef Name="fLessonId" />
+            </Principal>
+            <Dependent Role="tLesson1">
+              <PropertyRef Name="fLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tLessonAbout_tLesson">
+          <End Role="tLesson" Type="Self.tLesson" Multiplicity="0..1" />
+          <End Role="tLessonAbout" Type="Self.tLessonAbout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tLesson">
+              <PropertyRef Name="fLessonId" />
+            </Principal>
+            <Dependent Role="tLessonAbout">
+              <PropertyRef Name="fLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRecord_tTime">
+          <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+          <End Role="tRecord" Type="Self.tRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMember">
+              <PropertyRef Name="fMemberId" />
+            </Principal>
+            <Dependent Role="tRecord">
+              <PropertyRef Name="fMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FitnessModelStoreContainer">
+          <EntitySet Name="tActivity" EntityType="Self.tActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tAdmin" EntityType="Self.tAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCoach" EntityType="Self.tCoach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCoachRest" EntityType="Self.tCoachRest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tLesson" EntityType="Self.tLesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tLessonAbout" EntityType="Self.tLessonAbout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRecord" EntityType="Self.tRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tStudio" EntityType="Self.tStudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tTime" EntityType="Self.tTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tClass" EntityType="Self.tClass" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tClass].[TrainingId] AS [TrainingId], 
+    [tClass].[TrainingName] AS [TrainingName], 
+    [tClass].[TrainingCount] AS [TrainingCount], 
+    [tClass].[TrainingWeight] AS [TrainingWeight], 
+    [tClass].[TrainingRest] AS [TrainingRest], 
+    [tClass].[fMemberId] AS [fMemberId], 
+    [tClass].[fCoachId] AS [fCoachId], 
+    [tClass].[fTrainingDate] AS [fTrainingDate]
+    FROM [dbo].[tClass] AS [tClass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tContacts" EntityType="Self.tContacts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tContacts].[ContactID] AS [ContactID], 
+    [tContacts].[ContactName] AS [ContactName], 
+    [tContacts].[ContactNo] AS [ContactNo], 
+    [tContacts].[AddedOn] AS [AddedOn]
+    FROM [dbo].[tContacts] AS [tContacts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tFoodList" EntityType="Self.tFoodList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tFoodList].[fId] AS [fId], 
+    [tFoodList].[fFoodName] AS [fFoodName], 
+    [tFoodList].[fFoodCalories] AS [fFoodCalories], 
+    [tFoodList].[fFoodProtein] AS [fFoodProtein], 
+    [tFoodList].[fFoodFat] AS [fFoodFat], 
+    [tFoodList].[fFoodCarbohydrate] AS [fFoodCarbohydrate]
+    FROM [dbo].[tFoodList] AS [tFoodList]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tLesson_tLesson" Association="Self.FK_tLesson_tLesson">
+            <End Role="tLesson" EntitySet="tLesson" />
+            <End Role="tLesson1" EntitySet="tLesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tLessonAbout_tLesson" Association="Self.FK_tLessonAbout_tLesson">
+            <End Role="tLesson" EntitySet="tLesson" />
+            <End Role="tLessonAbout" EntitySet="tLessonAbout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRecord_tTime" Association="Self.FK_tRecord_tTime">
+            <End Role="tMember" EntitySet="tMember" />
+            <End Role="tRecord" EntitySet="tRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FitnessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tActivity">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" />
+          <Property Name="ActivityId" Type="Int32" />
+          <Property Name="ActivityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityStartDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityEndDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityPeople" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ActivityPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fAdminId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tAdmin">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" />
+          <Property Name="fAdminIdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fAdminGender" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="fAdminAge" Type="Int32" />
+          <Property Name="fAdminCID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fAdminBirthday" Type="DateTime" Precision="3" />
+          <Property Name="fAdminPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fAdminAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fAdminEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fAdminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fAdminTime" Type="DateTime" Precision="3" />
+          <Property Name="fAdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tCoach">
+          <Key>
+            <PropertyRef Name="fCoachID" />
+          </Key>
+          <Property Name="fCoachID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fCoachName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fCoachGender" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="fCoachBirthday" Type="DateTime" Precision="3" />
+          <Property Name="fCoachGID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fCoachPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fCoachAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fCoachMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fCoachPassword" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="fCoachimg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fCoachLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fCoachSuccess" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tCoachRest">
+          <Key>
+            <PropertyRef Name="fRestId" />
+          </Key>
+          <Property Name="fRestId" Type="Int32" Nullable="false" />
+          <Property Name="fCoachId" Type="Int32" Nullable="false" />
+          <Property Name="fStartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fEndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tLesson">
+          <Key>
+            <PropertyRef Name="fLessonId" />
+          </Key>
+          <Property Name="fLessonId" Type="Int32" Nullable="false" />
+          <Property Name="fLessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fLessontime" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="fLessonRest" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="fLessonWeight" Type="Decimal" Precision="5" Scale="1" />
+          <NavigationProperty Name="tLesson1" Relationship="Self.FK_tLesson_tLesson" FromRole="tLesson" ToRole="tLesson1" />
+          <NavigationProperty Name="tLesson2" Relationship="Self.FK_tLesson_tLesson" FromRole="tLesson1" ToRole="tLesson" />
+          <NavigationProperty Name="tLessonAbout" Relationship="Self.FK_tLessonAbout_tLesson" FromRole="tLesson" ToRole="tLessonAbout" />
+        </EntityType>
+        <EntityType Name="tLessonAbout">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fLessonId" Type="Int32" />
+          <Property Name="flike" Type="Byte" />
+          <Property Name="fabout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tLesson" Relationship="Self.FK_tLessonAbout_tLesson" FromRole="tLessonAbout" ToRole="tLesson" />
+        </EntityType>
+        <EntityType Name="tMember">
+          <Key>
+            <PropertyRef Name="fMemberId" />
+          </Key>
+          <Property Name="fMemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fMemberName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberGender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fMemberAge" Type="Byte" />
+          <Property Name="fMemberCID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberBirthday" Type="DateTime" Precision="3" />
+          <Property Name="fMemberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MemberAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fMember_approced" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="fMember_Num" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fMember_time" Type="DateTime" Precision="3" />
+          <Property Name="fMember_googleID" Type="Int32" />
+          <NavigationProperty Name="tRecord" Relationship="Self.FK_tRecord_tTime" FromRole="tMember" ToRole="tRecord" />
+        </EntityType>
+        <EntityType Name="tOrder">
+          <Key>
+            <PropertyRef Name="fid" />
+          </Key>
+          <Property Name="fid" Type="Int32" Nullable="false" />
+          <Property Name="forderid" Type="Int32" Nullable="false" />
+          <Property Name="fMemberId" Type="Int32" Nullable="false" />
+          <Property Name="fCoachID" Type="Int32" Nullable="false" />
+          <Property Name="fLessonId" Type="Int32" Nullable="false" />
+          <Property Name="fSuccessed" Type="Int32" Nullable="false" />
+          <Property Name="fGynId" Type="Int32" Nullable="false" />
+          <Property Name="fStartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fEndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fTrainingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fApplyTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fOrderlike" Type="Int32" />
+          <Property Name="fOrderAbout" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tRecord">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fRecordId" Type="Int32" />
+          <Property Name="fRecordFoodName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fRecordFoodCalories" Type="Int32" />
+          <Property Name="fRecordFoodProtein" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fRecordFoodFat" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fRecordCarbohydrate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fRecordDate" Type="DateTime" Precision="0" />
+          <Property Name="fTimeId" Type="Int32" />
+          <Property Name="fTimeName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="fMemberId" Type="Int32" />
+          <NavigationProperty Name="tMember" Relationship="Self.FK_tRecord_tTime" FromRole="tRecord" ToRole="tMember" />
+        </EntityType>
+        <EntityType Name="tStudio">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" />
+          <Property Name="fCorpName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fTaxId" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="fPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fPasswords" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="fOwner" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fRepresentative" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fStudioNumber" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="fCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fDistrict" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="fAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cfImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fLongitude" Type="Single" />
+          <Property Name="fLatitude" Type="Single" />
+          <Property Name="fRegisterTime" Type="DateTime" Precision="0" />
+          <Property Name="fActivated" Type="Boolean" />
+          <Property Name="fNotification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tTime">
+          <Key>
+            <PropertyRef Name="fTimeId" />
+          </Key>
+          <Property Name="fTimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fEatTimeId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="fTimeName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tClass">
+          <Key>
+            <PropertyRef Name="TrainingId" />
+            <PropertyRef Name="TrainingName" />
+          </Key>
+          <Property Name="TrainingId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TrainingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrainingCount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TrainingWeight" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TrainingRest" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fMemberId" Type="Int32" />
+          <Property Name="fCoachId" Type="Int32" />
+          <Property Name="fTrainingDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tContacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+            <PropertyRef Name="ContactName" />
+            <PropertyRef Name="ContactNo" />
+            <PropertyRef Name="AddedOn" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddedOn" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tFoodList">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" />
+          <Property Name="fFoodName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fFoodCalories" Type="Int32" />
+          <Property Name="fFoodProtein" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fFoodFat" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fFoodCarbohydrate" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK_tLesson_tLesson">
+          <End Role="tLesson" Type="Self.tLesson" Multiplicity="1" />
+          <End Role="tLesson1" Type="Self.tLesson" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tLesson">
+              <PropertyRef Name="fLessonId" />
+            </Principal>
+            <Dependent Role="tLesson1">
+              <PropertyRef Name="fLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tLessonAbout_tLesson">
+          <End Role="tLesson" Type="Self.tLesson" Multiplicity="0..1" />
+          <End Role="tLessonAbout" Type="Self.tLessonAbout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tLesson">
+              <PropertyRef Name="fLessonId" />
+            </Principal>
+            <Dependent Role="tLessonAbout">
+              <PropertyRef Name="fLessonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tRecord_tTime">
+          <End Role="tMember" Type="Self.tMember" Multiplicity="0..1" />
+          <End Role="tRecord" Type="Self.tRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMember">
+              <PropertyRef Name="fMemberId" />
+            </Principal>
+            <Dependent Role="tRecord">
+              <PropertyRef Name="fMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FitnessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tActivity" EntityType="Self.tActivity" />
+          <EntitySet Name="tAdmin" EntityType="Self.tAdmin" />
+          <EntitySet Name="tCoach" EntityType="Self.tCoach" />
+          <EntitySet Name="tCoachRest" EntityType="Self.tCoachRest" />
+          <EntitySet Name="tLesson" EntityType="Self.tLesson" />
+          <EntitySet Name="tLessonAbout" EntityType="Self.tLessonAbout" />
+          <EntitySet Name="tMember" EntityType="Self.tMember" />
+          <EntitySet Name="tOrder" EntityType="Self.tOrder" />
+          <EntitySet Name="tRecord" EntityType="Self.tRecord" />
+          <EntitySet Name="tStudio" EntityType="Self.tStudio" />
+          <EntitySet Name="tTime" EntityType="Self.tTime" />
+          <EntitySet Name="tClass" EntityType="Self.tClass" />
+          <EntitySet Name="tContacts" EntityType="Self.tContacts" />
+          <EntitySet Name="tFoodList" EntityType="Self.tFoodList" />
+          <AssociationSet Name="FK_tLesson_tLesson" Association="Self.FK_tLesson_tLesson">
+            <End Role="tLesson" EntitySet="tLesson" />
+            <End Role="tLesson1" EntitySet="tLesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tLessonAbout_tLesson" Association="Self.FK_tLessonAbout_tLesson">
+            <End Role="tLesson" EntitySet="tLesson" />
+            <End Role="tLessonAbout" EntitySet="tLessonAbout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tRecord_tTime" Association="Self.FK_tRecord_tTime">
+            <End Role="tMember" EntitySet="tMember" />
+            <End Role="tRecord" EntitySet="tRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FitnessModelStoreContainer" CdmEntityContainer="FitnessEntities">
+          <EntitySetMapping Name="tActivity">
+            <EntityTypeMapping TypeName="FitnessModel.tActivity">
+              <MappingFragment StoreEntitySet="tActivity">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="ActivityStartDate" ColumnName="ActivityStartDate" />
+                <ScalarProperty Name="ActivityEndDate" ColumnName="ActivityEndDate" />
+                <ScalarProperty Name="ActivityPeople" ColumnName="ActivityPeople" />
+                <ScalarProperty Name="ActivityAddress" ColumnName="ActivityAddress" />
+                <ScalarProperty Name="ActivityPrice" ColumnName="ActivityPrice" />
+                <ScalarProperty Name="ActivityPicture" ColumnName="ActivityPicture" />
+                <ScalarProperty Name="fAdminId" ColumnName="fAdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tAdmin">
+            <EntityTypeMapping TypeName="FitnessModel.tAdmin">
+              <MappingFragment StoreEntitySet="tAdmin">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fAdminIdName" ColumnName="fAdminIdName" />
+                <ScalarProperty Name="fAdminGender" ColumnName="fAdminGender" />
+                <ScalarProperty Name="fAdminAge" ColumnName="fAdminAge" />
+                <ScalarProperty Name="fAdminCID" ColumnName="fAdminCID" />
+                <ScalarProperty Name="fAdminBirthday" ColumnName="fAdminBirthday" />
+                <ScalarProperty Name="fAdminPhone" ColumnName="fAdminPhone" />
+                <ScalarProperty Name="fAdminAddress" ColumnName="fAdminAddress" />
+                <ScalarProperty Name="fAdminEmail" ColumnName="fAdminEmail" />
+                <ScalarProperty Name="fAdminPassword" ColumnName="fAdminPassword" />
+                <ScalarProperty Name="fAdminTime" ColumnName="fAdminTime" />
+                <ScalarProperty Name="fAdminId" ColumnName="fAdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCoach">
+            <EntityTypeMapping TypeName="FitnessModel.tCoach">
+              <MappingFragment StoreEntitySet="tCoach">
+                <ScalarProperty Name="fCoachID" ColumnName="fCoachID" />
+                <ScalarProperty Name="fCoachName" ColumnName="fCoachName" />
+                <ScalarProperty Name="fCoachGender" ColumnName="fCoachGender" />
+                <ScalarProperty Name="fCoachBirthday" ColumnName="fCoachBirthday" />
+                <ScalarProperty Name="fCoachGID" ColumnName="fCoachGID" />
+                <ScalarProperty Name="fCoachPhone" ColumnName="fCoachPhone" />
+                <ScalarProperty Name="fCoachAddress" ColumnName="fCoachAddress" />
+                <ScalarProperty Name="fCoachMail" ColumnName="fCoachMail" />
+                <ScalarProperty Name="fCoachPassword" ColumnName="fCoachPassword" />
+                <ScalarProperty Name="fCoachimg" ColumnName="fCoachimg" />
+                <ScalarProperty Name="fCoachLicense" ColumnName="fCoachLicense" />
+                <ScalarProperty Name="fCoachSuccess" ColumnName="fCoachSuccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCoachRest">
+            <EntityTypeMapping TypeName="FitnessModel.tCoachRest">
+              <MappingFragment StoreEntitySet="tCoachRest">
+                <ScalarProperty Name="fRestId" ColumnName="fRestId" />
+                <ScalarProperty Name="fCoachId" ColumnName="fCoachId" />
+                <ScalarProperty Name="fStartTime" ColumnName="fStartTime" />
+                <ScalarProperty Name="fEndTime" ColumnName="fEndTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tLesson">
+            <EntityTypeMapping TypeName="FitnessModel.tLesson">
+              <MappingFragment StoreEntitySet="tLesson">
+                <ScalarProperty Name="fLessonId" ColumnName="fLessonId" />
+                <ScalarProperty Name="fLessonName" ColumnName="fLessonName" />
+                <ScalarProperty Name="fLessontime" ColumnName="fLessontime" />
+                <ScalarProperty Name="fLessonRest" ColumnName="fLessonRest" />
+                <ScalarProperty Name="fLessonWeight" ColumnName="fLessonWeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tLessonAbout">
+            <EntityTypeMapping TypeName="FitnessModel.tLessonAbout">
+              <MappingFragment StoreEntitySet="tLessonAbout">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fLessonId" ColumnName="fLessonId" />
+                <ScalarProperty Name="flike" ColumnName="flike" />
+                <ScalarProperty Name="fabout" ColumnName="fabout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMember">
+            <EntityTypeMapping TypeName="FitnessModel.tMember">
+              <MappingFragment StoreEntitySet="tMember">
+                <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+                <ScalarProperty Name="fMemberName" ColumnName="fMemberName" />
+                <ScalarProperty Name="fMemberGender" ColumnName="fMemberGender" />
+                <ScalarProperty Name="fMemberAge" ColumnName="fMemberAge" />
+                <ScalarProperty Name="fMemberCID" ColumnName="fMemberCID" />
+                <ScalarProperty Name="fMemberBirthday" ColumnName="fMemberBirthday" />
+                <ScalarProperty Name="fMemberPhone" ColumnName="fMemberPhone" />
+                <ScalarProperty Name="MemberAddress" ColumnName="MemberAddress" />
+                <ScalarProperty Name="fMemberEmail" ColumnName="fMemberEmail" />
+                <ScalarProperty Name="fMemberPassword" ColumnName="fMemberPassword" />
+                <ScalarProperty Name="fMemberPicture" ColumnName="fMemberPicture" />
+                <ScalarProperty Name="fMember_approced" ColumnName="fMember_approced" />
+                <ScalarProperty Name="fMember_Num" ColumnName="fMember_Num" />
+                <ScalarProperty Name="fMember_time" ColumnName="fMember_time" />
+                <ScalarProperty Name="fMember_googleID" ColumnName="fMember_googleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tOrder">
+            <EntityTypeMapping TypeName="FitnessModel.tOrder">
+              <MappingFragment StoreEntitySet="tOrder">
+                <ScalarProperty Name="fOrderAbout" ColumnName="fOrderAbout" />
+                <ScalarProperty Name="fOrderlike" ColumnName="fOrderlike" />
+                <ScalarProperty Name="fid" ColumnName="fid" />
+                <ScalarProperty Name="forderid" ColumnName="forderid" />
+                <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+                <ScalarProperty Name="fCoachID" ColumnName="fCoachID" />
+                <ScalarProperty Name="fLessonId" ColumnName="fLessonId" />
+                <ScalarProperty Name="fSuccessed" ColumnName="fSuccessed" />
+                <ScalarProperty Name="fGynId" ColumnName="fGynId" />
+                <ScalarProperty Name="fStartTime" ColumnName="fStartTime" />
+                <ScalarProperty Name="fEndTime" ColumnName="fEndTime" />
+                <ScalarProperty Name="fTrainingName" ColumnName="fTrainingName" />
+                <ScalarProperty Name="fApplyTime" ColumnName="fApplyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRecord">
+            <EntityTypeMapping TypeName="FitnessModel.tRecord">
+              <MappingFragment StoreEntitySet="tRecord">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fRecordId" ColumnName="fRecordId" />
+                <ScalarProperty Name="fRecordFoodName" ColumnName="fRecordFoodName" />
+                <ScalarProperty Name="fRecordFoodCalories" ColumnName="fRecordFoodCalories" />
+                <ScalarProperty Name="fRecordFoodProtein" ColumnName="fRecordFoodProtein" />
+                <ScalarProperty Name="fRecordFoodFat" ColumnName="fRecordFoodFat" />
+                <ScalarProperty Name="fRecordCarbohydrate" ColumnName="fRecordCarbohydrate" />
+                <ScalarProperty Name="fRecordDate" ColumnName="fRecordDate" />
+                <ScalarProperty Name="fTimeId" ColumnName="fTimeId" />
+                <ScalarProperty Name="fTimeName" ColumnName="fTimeName" />
+                <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tStudio">
+            <EntityTypeMapping TypeName="FitnessModel.tStudio">
+              <MappingFragment StoreEntitySet="tStudio">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fCorpName" ColumnName="fCorpName" />
+                <ScalarProperty Name="fTaxId" ColumnName="fTaxId" />
+                <ScalarProperty Name="fPhone" ColumnName="fPhone" />
+                <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+                <ScalarProperty Name="fPasswords" ColumnName="fPasswords" />
+                <ScalarProperty Name="fOwner" ColumnName="fOwner" />
+                <ScalarProperty Name="fRepresentative" ColumnName="fRepresentative" />
+                <ScalarProperty Name="fStudioNumber" ColumnName="fStudioNumber" />
+                <ScalarProperty Name="fCounty" ColumnName="fCounty" />
+                <ScalarProperty Name="fDistrict" ColumnName="fDistrict" />
+                <ScalarProperty Name="fAddress" ColumnName="fAddress" />
+                <ScalarProperty Name="cfImage" ColumnName="cfImage" />
+                <ScalarProperty Name="fLongitude" ColumnName="fLongitude" />
+                <ScalarProperty Name="fLatitude" ColumnName="fLatitude" />
+                <ScalarProperty Name="fRegisterTime" ColumnName="fRegisterTime" />
+                <ScalarProperty Name="fActivated" ColumnName="fActivated" />
+                <ScalarProperty Name="fNotification" ColumnName="fNotification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tTime">
+            <EntityTypeMapping TypeName="FitnessModel.tTime">
+              <MappingFragment StoreEntitySet="tTime">
+                <ScalarProperty Name="fTimeId" ColumnName="fTimeId" />
+                <ScalarProperty Name="fEatTimeId" ColumnName="fEatTimeId" />
+                <ScalarProperty Name="fTimeName" ColumnName="fTimeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tClass">
+            <EntityTypeMapping TypeName="FitnessModel.tClass">
+              <MappingFragment StoreEntitySet="tClass">
+                <ScalarProperty Name="TrainingId" ColumnName="TrainingId" />
+                <ScalarProperty Name="TrainingName" ColumnName="TrainingName" />
+                <ScalarProperty Name="TrainingCount" ColumnName="TrainingCount" />
+                <ScalarProperty Name="TrainingWeight" ColumnName="TrainingWeight" />
+                <ScalarProperty Name="TrainingRest" ColumnName="TrainingRest" />
+                <ScalarProperty Name="fMemberId" ColumnName="fMemberId" />
+                <ScalarProperty Name="fCoachId" ColumnName="fCoachId" />
+                <ScalarProperty Name="fTrainingDate" ColumnName="fTrainingDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tContacts">
+            <EntityTypeMapping TypeName="FitnessModel.tContacts">
+              <MappingFragment StoreEntitySet="tContacts">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tFoodList">
+            <EntityTypeMapping TypeName="FitnessModel.tFoodList">
+              <MappingFragment StoreEntitySet="tFoodList">
+                <ScalarProperty Name="fId" ColumnName="fId" />
+                <ScalarProperty Name="fFoodName" ColumnName="fFoodName" />
+                <ScalarProperty Name="fFoodCalories" ColumnName="fFoodCalories" />
+                <ScalarProperty Name="fFoodProtein" ColumnName="fFoodProtein" />
+                <ScalarProperty Name="fFoodFat" ColumnName="fFoodFat" />
+                <ScalarProperty Name="fFoodCarbohydrate" ColumnName="fFoodCarbohydrate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
